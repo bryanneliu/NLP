@@ -1,0 +1,75 @@
+#
+# WRE Grammars for deal detail
+#
+
+#
+# Constrains
+#
+
+# FIRST_ORDER
+# NEXT_ORDER
+# MEMBERSHIP
+# ONLINE ORDER
+# IN-STORE ORDER
+# SALE
+# REFER_FRIEND
+# LINK_CARD
+
+_define DOLLAR ("$"|"dollar"|"dollars")
+_define PERCENT ("%"|"percent")
+_define NUMBER ('[0-9]+')
+_define NUMBERTH ("first"|"second"|"third"|"fourth"|"1st"|"2nd"|"3rd"|"4th")
+_define ENGLISH_NUMBER ("zero"|"one"|"two"|"three"|"four"|"five"|"six"|"seven"|"eight"|"nine"|"ten"|"eleven"|"twelve"|"thirteen"|"fourteen"|"fifteen"|"sixteen"|"seventeen"|"eighteen"|"nineteen"|"twenty"|"thirty"|"forty"|"fifty"|"sixty")
+
+# Example: $10; over $10; under $10; $10 or more; $10 or less; up to $10
+# Note: $10.00 -> $10 00 (After word break, the "." is ignored)
+# Error Handling: 
+_define DefMoney
+(
+	(DOLLAR NUMBER+)
+	|
+	(ENGLISH_NUMBER DOLLAR)
+	| 
+	("over"|"under" DOLLAR NUMBER+) 
+	| 
+	(DOLLAR NUMBER+ "or" "more"|"less") 
+	| 
+	("up" "to" DOLLAR NUMBER+) 
+	| 
+	("additional"|"extra" DOLLAR NUMBER+)
+)
+_end
+
+_define PREP ("on"|"with"|"of"|"when"|"for")
+_define DefAny @ANY
+_define DefOrder @ORDER
+_define DefCode @CODE
+_define DefCoupon @COUPON
+_define NO_LIMIT ("no" "limit")|("no" "minimum")|("within" "us")
+
+_define DefAnyOrder (DefAny? DefOrder?)
+_define DefWithoutCondition (DefAnyOrder|DefCode|NO_LIMIT|DefCoupon)
+
+_define DefFirstOrder @FIRST_ORDER
+< DefFirstOrder > --> CONSTRAIN_FIRST_ORDER
+
+_define DefNextOrder @NEXT_ORDER
+< DefNextOrder > --> CONSTRAIN_NEXT_ORDER
+
+_define DefLinkCard @CARD
+< DefLinkCard > --> CONSTRAIN_LINK_CARD
+
+_define DefOnlineOrder @ONLINE
+< DefOnlineOrder > --> CONSTRAIN_ONLINE_ORDER
+
+_define DefInStoreOrder @INSTORE
+< DefInStoreOrder > --> CONSTRAIN_INSTORE_ORDER
+
+_define DefSale @SALE
+< DefSale > --> CONSTRAIN_SALE
+
+_define DefReferFrined @REFER_FRIEND
+< DefReferFrined > --> CONSTRAIN_REFER_FRIEND
+
+
+
