@@ -1,0 +1,11 @@
+chmod +x synonym_fe.sh
+./synonym_fe.sh spear_folder djk_version
+
+./synonym_fe.sh threshold_15 20230814-threshold15-v2
+./synonym_fe.sh threshold_20 20230814-threshold20-v1
+
+./synonym_eu.sh threshold_5 20230814-threshold5-v1
+./synonym_eu.sh threshold_15 20230814-threshold15-v3
+
+./testDataset_na.sh overlap_query_50.0_tc_100_topQuery_-100 20231115-overlap-v1
+./testDataset_na.sh overlap_query_50.0_tc_100_topQuery_30.0 20231115-merge-v1
