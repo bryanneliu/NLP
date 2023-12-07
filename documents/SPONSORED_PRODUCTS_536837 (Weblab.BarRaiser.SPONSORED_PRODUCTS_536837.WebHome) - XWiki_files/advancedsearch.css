@@ -1,0 +1,139 @@
+.modal-text {
+    color: black;
+}
+#advanced-search-button {
+    position: absolute;
+    z-index: 1000;
+    left: 10px;
+    top: calc(50% - 0.75em);
+}
+#advanced-search-icon {
+    color: #336699;
+}
+.advancedsearch-header {
+    border-bottom: none !important;
+    font-weight: bold;
+}
+#advancedSearchClearAllBtn {
+    text-align: left;
+    padding-left: 0px;
+    text-decoration: underline;
+    font-weight: bold;
+    color: #0088CC;
+}
+.advancedsearch-subtitle {
+    font-weight: bold;
+}
+#advancedSearch_modal_header {
+    padding-left: 40px;
+    padding-top: 30px;
+    padding-bottom: 0px;
+    border-bottom: none;
+}
+#advancedSearch_modal_dialog {
+    width: 650px;
+}
+#advancedSearch_modal_key_combo {
+    padding-left: 40px;
+    padding-top: 5px;
+}
+#advancedSearch_modal_fields {
+    padding-left: 40px;
+}
+.help-block-subtext {
+    padding-left: 235px;
+}
+#advanced_search_close {
+    position: absolute;
+    right: 30px;
+    color: #71747a;
+    opacity: 1;
+}
+.form-control.form-control-keywords-combo {
+    width: 410px !important;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.form-control.form-control-keywords-combo-operator {
+    width: 120px;
+    padding-left: 5px;
+    margin-top: 10px;
+}
+#wildcard_keyword, #creator_keyword, #tag_keyword {
+    width: 544px;
+}
+.help-block {
+    font-style: italic;
+    color: #71747a;
+}
+.xwiki-search-clearable-form {
+    margin-top: 20px
+}
+.advancedsearch-pageview {
+    font-weight: normal !important;
+}
+#tags_title, #viewcount_title {
+    margin-top: 20px;
+}
+.advancedsearch-example {
+    font-style: italic;
+}
+
+#advanced-search-line {
+    position: absolute;
+    z-index: 1000;
+    left: 30px;
+    top: calc(50% - 0.75em);
+    height: 20px;
+    width: 1px;
+    background-color: #dddddd;
+}
+
+#search-tree-icon-outer-div {
+    position: absolute;
+    z-index: 1000;
+    left: 35px;
+    top: calc(50% - 0.75em);
+    color: #336699;
+    border-radius: 5px;
+    height:22px;
+    width:22px;
+}
+
+#search-tree-icon {
+    position: relative;
+    left: 3px;
+}
+
+.search-tree-icon-inactive {
+    color: #336699 !important;
+}
+
+.search-tree-icon-active {
+  color: white !important;
+}
+
+.search-tree-icon-outer-div-active {
+  background-color: #0089DC;
+}
+
+#search-tree-url-path {
+    position: relative;
+    left: 20px;
+    font-size: 12px;
+}
+
+#search-tree-info {
+    color: #0089DC;
+}
+
+#search-tree-info-content {
+    font-size: 12px;
+}
+::placeholder {
+    color: #71747a;
+}
+.tooltip-inner {
+    background-color: #A7C7E7 !important;
+    color: black;
+}
