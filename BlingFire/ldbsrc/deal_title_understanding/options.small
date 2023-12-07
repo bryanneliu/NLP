@@ -1,0 +1,20 @@
+#
+# Compilation options
+#
+# Note: Before compiling this LDB you need to recompile 
+#    with LDB which contains dictionary first!!! Use "mode=morph"
+#
+
+OUTPUT = deal_title_understanding.bin
+
+opt_build_tag_dict = --input-enc=UTF-8 --sort-info --type=moore
+opt_build_ne_rules = --tagset2=$(srcdir)/tag.dict.tagset.txt --ldb=$(dstdir)/deal_title_understanding.morph.bin
+
+opt_pack_dict_fsm = --alg=triv --type=moore-dfa --use-iwia
+opt_pack_dict_i2t = --alg=triv --type=mmap --imp-mmap
+
+resources = \
+	$(tmpdir)/tag.dict.fsm.$(mode).dump \
+	$(tmpdir)/tag.dict.i2t.$(mode).dump \
+	$(tmpdir)/ne-rules.$(mode).dump \
+	$(tmpdir)/ne-rules.map.$(mode).dump \

@@ -1,0 +1,497 @@
+gardening	gardening/garden
+jewels	jewels/jewel
+pheasants	pheasants/pheasant
+themed	themed/theme
+towering	towering/tower
+introduced	introduced/introduce
+coffee maker 4 in 1	coffee/WORD maker/WORD 4/WORD in/WORD 1/WORD
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+5lb	5/MEASUREMENT lb/UNIT_POUND
+50 lb	50/MEASUREMENT lb/UNIT_POUND
+20 lbs	20/MEASUREMENT lbs/UNIT_POUND
+15 pound	15/MEASUREMENT pound/UNIT_POUND
+75-125 pounds	75/MEASUREMENT_START -/IGNORE 125/MEASUREMENT_END pounds/UNIT_POUND
+30-50 lbs	30/MEASUREMENT_START -/IGNORE 50/MEASUREMENT_END lbs/UNIT_POUND
+11-22lb	11/MEASUREMENT_START -/IGNORE 22/MEASUREMENT_END lb/UNIT_POUND
+50 to 90 lbs	50/MEASUREMENT_START _to_/IGNORE 90/MEASUREMENT_END lbs/UNIT_POUND
+400 lb capacity	400/MEASUREMENT lb/UNIT_POUND capacity/IGNORE
+300+ lb capacity	300/MEASUREMENT_START +/IGNORE lb/UNIT_POUND capacity/IGNORE
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+1inch	1/MEASUREMENT inch/UNIT_INCH
+1in	1/MEASUREMENT in/UNIT_INCH
+12 inch	12/MEASUREMENT inch/UNIT_INCH
+12 inch deep	12/MEASUREMENT inch/UNIT_INCH deep/IGNORE
+2 in	2/MEASUREMENT in/UNIT_INCH
+1 inch thick	1/MEASUREMENT inch/UNIT_INCH thick/IGNORE
+65+ inch	65/MEASUREMENT_START +/IGNORE inch/UNIT_INCH
+55 inch+ 	55/MEASUREMENT inch/UNIT_INCH +/WORD
+10 + inch	10/MEASUREMENT_START +/IGNORE inch/UNIT_INCH
+72 + inches long	72/MEASUREMENT_START +/IGNORE inches/UNIT_INCH long/IGNORE
+28 to 48 inches	28/MEASUREMENT_START _to_/IGNORE 48/MEASUREMENT_END inches/UNIT_INCH
+half inch	half/WORD inch/WORD
+1/8 inch thick 	1/8/MEASUREMENT inch/UNIT_INCH thick/IGNORE
+24 inch wide	24/MEASUREMENT inch/UNIT_INCH wide/IGNORE
+10.2-inch	10.2/MEASUREMENT inch/UNIT_INCH
+24 x 36 inches	24/DIMENSION x/IGNORE 36/DIMENSION inches/inch
+84 inches long	84/MEASUREMENT inches/UNIT_INCH long/IGNORE
+84 inch length	84/MEASUREMENT inch/UNIT_INCH length/IGNORE
+12” (pink 12” wig)	12/WORD ”/IGNORE (/IGNORE pink/WORD 12/WORD ”/IGNORE wig/WORD )/IGNORE
+1/2"	1/2/MEASUREMENT "/UNIT_INCH
+3"	3/MEASUREMENT "/UNIT_INCH
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+40 oz	40/MEASUREMENT oz/UNIT_OUNCE
+8oz	8/MEASUREMENT oz/UNIT_OUNCE
+32 ounce	32/MEASUREMENT ounce/UNIT_OUNCE
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+5 gallon	5/MEASUREMENT gallon/UNIT_GALLON
+5 gal	5/MEASUREMENT gal/UNIT_GALLON
+13+ gallon	13/MEASUREMENT_START +/IGNORE gallon/UNIT_GALLON
+half gallon	half/WORD gallon/WORD
+one gallon	one/WORD gallon/WORD
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+6ft	6/MEASUREMENT ft/UNIT_FOOT
+6 feet	6/MEASUREMENT feet/UNIT_FOOT
+6 foot	6/MEASUREMENT foot/UNIT_FOOT
+6 foot tall	6/MEASUREMENT foot/UNIT_FOOT tall/IGNORE
+10 ft	10/MEASUREMENT ft/UNIT_FOOT
+100+ ft 	100/MEASUREMENT_START +/IGNORE ft/UNIT_FOOT
+100 ft+	100/MEASUREMENT ft/UNIT_FOOT +/WORD
+4' (garden arch 4')	4/MEASUREMENT '/UNIT_FOOT (/IGNORE garden/WORD arch/WORD 4/MEASUREMENT '/UNIT_FOOT )/IGNORE
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+20v	20/MEASUREMENT v/UNIT_VOLT
+12 volt	12/MEASUREMENT volt/UNIT_VOLT
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+100w	100/MEASUREMENT w/UNIT_WATT
+60 watt	60/MEASUREMENT watt/UNIT_WATT
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+6 quart (slow cooker 6 quart insert)	6/MEASUREMENT quart/UNIT_QUART (/IGNORE slow/WORD cooker/WORD 6/MEASUREMENT quart/UNIT_QUART insert/WORD )/IGNORE
+6 qt 	6/MEASUREMENT qt/UNIT_QUART
+3qt	3/MEASUREMENT qt/UNIT_QUART
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+2 liter	2/MEASUREMENT liter/UNIT_LITER
+3l	3/MEASUREMENT l/UNIT_LITER
+1ml	1/MEASUREMENT ml/UNIT_MilliLiter
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+5g (galaxy s20 5g fuzzy cases)	5/MEASUREMENT g/UNIT_GRAM (/IGNORE galaxy/WORD s20/WORD 5/MEASUREMENT g/UNIT_GRAM fuzzy/WORD cases/case )/IGNORE
+5 g	5/MEASUREMENT g/UNIT_GRAM
+20g (20g horseshoe ring black)	20/MEASUREMENT g/UNIT_GRAM (/IGNORE 20/MEASUREMENT g/UNIT_GRAM horseshoe/WORD ring/WORD black/WORD )/IGNORE
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+200mg	200/MEASUREMENT mg/UNIT_MilliGram
+1200 mg	1200/MEASUREMENT mg/UNIT_MilliGram
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+10000mcg	10000/MEASUREMENT mcg/UNIT_MicroGram
+1000 mcg	1000/MEASUREMENT mcg/UNIT_MicroGram
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+12 cup	12/MEASUREMENT cup/UNIT_CUP
+single cup	single/WORD cup/WORD
+one cup	one/WORD cup/WORD
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+100 calorie	100/MEASUREMENT calorie/UNIT_CALORIE
+50 cal (chevy 2500 hd 50 cal antenna)	50/MEASUREMENT cal/UNIT_CALORIE (/IGNORE chevy/WORD 2500/WORD hd/WORD 50/MEASUREMENT cal/UNIT_CALORIE antenna/WORD )/IGNORE
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+44mm	44/MEASUREMENT mm/UNIT_MilliMeter
+44 mm	44/MEASUREMENT mm/UNIT_MilliMeter
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+two seater 	two/WORD seater/WORD
+2 seat	2/MEASUREMENT seat/UNIT_SEAT
+3 seats	3/MEASUREMENT seats/UNIT_SEAT
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+2 person	2/MEASUREMENT person/UNIT_PERSON
+4 person	4/MEASUREMENT person/UNIT_PERSON
+4 people	4/MEASUREMENT people/UNIT_PERSON
+two person	two/WORD person/WORD
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+30 pair	30/MEASUREMENT pair/UNIT_PAIR
+one pair	one/WORD pair/WORD
+single pair	single/WORD pair/WORD
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+1tb	1/MEASUREMENT tb/UNIT_TeraByte
+1 tb	1/MEASUREMENT tb/UNIT_TeraByte
+1 terabyte	1/MEASUREMENT terabyte/UNIT_TeraByte
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+size 8.5	size/WORD 8.5/WORD
+size 20	size/WORD 20/WORD
+size 2 big kid 	size/WORD 2/WORD big/WORD kid/AUDIENCE_KID
+size 5/6	size/IGNORE 5/SIZE_START 6/SIZE_END
+size 7/8	size/IGNORE 7/SIZE_START 8/SIZE_END
+size 7-8	size/IGNORE 7/SIZE_START 8/SIZE_END
+size 7 8	size/IGNORE 7/SIZE_START 8/SIZE_END
+2t-3t (black toddler crew socks boys 2t-3t)	2t/SIZE_START 3t/SIZE_END (/IGNORE black/WORD toddler/AUDIENCE_TODDLER crew/WORD socks/sock boys/GENDER_BOY 2t/SIZE_START 3t/SIZE_END )/IGNORE
+4t-5t	4t/SIZE_START 5t/SIZE_END
+size 4t	size/WORD 4t/WORD
+size 3x (men's sweatshirt size 3x)	size/WORD 3x/WORD (/IGNORE men/WORD 's/IGNORE sweatshirt/WORD size/WORD 3x/WORD )/IGNORE
+men 9-12	men/AUDIENCE_MAN 9/SIZE_START 12/SIZE_END
+5t	5t/WORD
+4x-5x	4x/SIZE_START 5x/SIZE_END
+3x	3x/WORD
+4x (for women 4x)	4x/WORD (/IGNORE for/IGNORE women/woman 4x/WORD )/IGNORE
+5x (5x baby blue shirt)men 9-12	5x/WORD (/IGNORE 5x/WORD baby/AUDIENCE_BABY blue/WORD shirt/WORD )/IGNORE men/AUDIENCE_MAN 9/SIZE_START 12/SIZE_END
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+in 10 wide	in/IGNORE 10/WORD wide/WORD
+9 wide	9/WORD wide/WORD
+9.5 wide	9.5/WORD wide/WORD
+size 11 wide 	size/WORD 11/WORD wide/WORD
+11 wide	11/WORD wide/WORD
+wide width	wide/WORD width/WORD
+wide feet	wide/WORD feet/foot
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+california king	california_king/SIZE_CalKing
+california king size	california_king/SIZE_CalKing size/IGNORE
+cal king	cal_king/SIZE_CalKing
+cali king	cali_king/SIZE_CalKing
+cal king size	cal_king/SIZE_CalKing size/IGNORE
+king size	king/SIZE_King size/IGNORE
+king sized 	king/SIZE_King sized/IGNORE
+king size oversized	king/SIZE_King size/IGNORE oversized/oversize
+oversized king	oversized/oversize king/SIZE_King
+king-size	king/SIZE_King size/IGNORE
+queen size	queen/SIZE_Queen size/IGNORE
+queen sized 	queen/SIZE_Queen sized/IGNORE
+queen-size	queen/SIZE_Queen size/IGNORE
+oversized queen (oversized queen spread)	oversized/oversize queen/SIZE_Queen (/IGNORE oversized/oversize queen/SIZE_Queen spread/WORD )/IGNORE
+full size	full/SIZE_Full size/IGNORE
+full-size	full/SIZE_Full size/IGNORE
+twin size	twin/SIZE_Twin size/IGNORE
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+medium size (mountain bike knee pads for men medium size)	medium/SIZE_Medium size/IGNORE (/IGNORE mountain/WORD bike/WORD knee/WORD pads/WORD for/IGNORE men/man medium/SIZE_Medium size/IGNORE )/IGNORE
+size medium	size/IGNORE medium/SIZE_Medium
+medium sized (medium sized round wood and metal basket)	medium/SIZE_Medium sized/IGNORE (/IGNORE medium/SIZE_Medium sized/IGNORE round/WORD wood/WORD and/IGNORE metal/WORD basket/WORD )/IGNORE
+medium length (medium length wig lots of volume)	medium/SIZE_Medium length/IGNORE (/IGNORE medium/SIZE_Medium length/IGNORE wig/WORD lots/lot of/IGNORE volume/WORD )/IGNORE
+midsize	midsize/SIZE_Medium
+mid size	mid_size/SIZE_Medium
+petite length (petite length pantsuit for women 2022)	petite/SIZE_Petite length/IGNORE (/IGNORE petite/SIZE_Petite length/IGNORE pantsuit/WORD for/IGNORE women/woman 2022/WORD )/IGNORE
+petite length (for women petite length)	petite/SIZE_Petite length/IGNORE (/IGNORE for/IGNORE women/woman petite/SIZE_Petite length/IGNORE )/IGNORE
+size petite	size/IGNORE petite/SIZE_Petite
+small size	small/SIZE_Small size/IGNORE
+size small	size/IGNORE small/SIZE_Small
+large size	large/SIZE_Large size/IGNORE
+size large	size/IGNORE large/SIZE_Large
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+xl	xl/SIZE_XLarge
+extra large	extra_large/SIZE_XLarge
+size xl	size/IGNORE xl/SIZE_XLarge
+l/xl	l/WORD //WORD xl/SIZE_XLarge
+xl large	xl_large/SIZE_XLarge
+x-large 	x-large/SIZE_XLarge
+xlarge	xlarge/SIZE_XLarge
+x large	x_large/SIZE_XLarge
+extra small	extra_small/SIZE_XSmall
+xsmall	xsmall/SIZE_XSmall
+x small	x_small/SIZE_XSmall
+size xs	size/IGNORE xs/SIZE_XSmall
+xs	xs/SIZE_XSmall
+xxlarge	xxlarge/SIZE_XXLarge
+xxl	xxl/SIZE_XXLarge
+2xl	2xl/SIZE_XXLarge
+xxxl	xxxl/SIZE_XXXLarge
+3xl	3xl/SIZE_XXXLarge
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+extra wide width	extra/WORD wide/WORD width/WORD
+extra wide (extra wide plastic dividers)	extra/WORD wide/WORD (/IGNORE extra/WORD wide/WORD plastic/WORD dividers/divider )/IGNORE
+ultra wide	ultra/WORD wide/WORD
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+8x10	8/DIMENSION x/IGNORE 10/DIMENSION
+8.5 x 11	8.5/DIMENSION x/IGNORE 11/DIMENSION
+22x14x9	22/DIMENSION x/IGNORE 14/DIMENSION x/IGNORE 9/DIMENSION
+8 by 10	8/DIMENSION by/IGNORE 10/DIMENSION
+###############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+triple a	triple_a/BATTERY_AAA
+triple aaa	triple_aaa/BATTERY_AAA
+aaa 	aaa/BATTERY_AAA
+battery aa size	battery/IGNORE aa/BATTERY_AA size/IGNORE
+aa batterie	aa/BATTERY_AA batterie/IGNORE
+aaa batteries	aaa/BATTERY_AAA batteries/IGNORE
+aaa size (aaa size rechargeable flashlight)	aaa/BATTERY_AAA size/IGNORE (/IGNORE aaa/BATTERY_AAA size/IGNORE rechargeable/WORD flashlight/WORD )/IGNORE
+double a	double_a/BATTERY_AA
+double a battery	double_a/BATTERY_AA battery/IGNORE
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+2 percent (amazon fresh milk 2 percent lactose free)	2/MEASUREMENT percent/UNIT_PERCENT (/IGNORE amazon/WORD fresh/WORD milk/WORD 2/MEASUREMENT percent/UNIT_PERCENT lactose/WORD free/WORD )/IGNORE
+2% percent	2/MEASUREMENT %_percent/UNIT_PERCENT
+100% 	100/MEASUREMENT %/UNIT_PERCENT
+100 percent	100/MEASUREMENT percent/UNIT_PERCENT
+60%	60/MEASUREMENT %/UNIT_PERCENT
+60% percent (60% percent keyboard keycaps japanese)	60/MEASUREMENT %_percent/UNIT_PERCENT (/IGNORE 60/MEASUREMENT %_percent/UNIT_PERCENT keyboard/WORD keycaps/WORD japanese/WORD )/IGNORE
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+	
+8 set	8/MEASUREMENT _set/UNIT_SET
+2 panels set	2/MEASUREMENT panels_set/UNIT_SET
+3 piece set	3/MEASUREMENT piece_set/UNIT_SET
+2 piece sets	2/MEASUREMENT piece_sets/UNIT_SET
+two piece set	two/WORD piece/WORD set/WORD
+set of 2	set_of/UNIT_SET 2/MEASUREMENT
+set of six	set/WORD of/IGNORE six/WORD
+set for 2	set_for/UNIT_SET 2/MEASUREMENT
+sets for 4	sets_for/UNIT_SET 4/MEASUREMENT
+case of 24	case_of/UNIT_SET 24/MEASUREMENT
+set 4	set/UNIT_SET 4/MEASUREMENT
+sets 3pc	sets/set 3/MEASUREMENT pc/UNIT_SET
+sets of 3	sets_of/UNIT_SET 3/MEASUREMENT
+#################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+double pack	double/WORD pack/WORD
+2 pack	2/MEASUREMENT pack/UNIT_SET
+2-pack	2/MEASUREMENT pack/UNIT_SET
+24 pack+	24/MEASUREMENT pack/UNIT_SET +/WORD
+pack of 6	pack_of/UNIT_SET 6/MEASUREMENT
+multipack	multipack/WORD
+multi pack	multi/WORD pack/WORD
+combo pack	combo/WORD pack/WORD
+family pack	family/WORD pack/WORD
+2pk (christmas flag 2pk)	2/MEASUREMENT pk/UNIT_SET (/IGNORE christmas/WORD flag/WORD 2/MEASUREMENT pk/UNIT_SET )/IGNORE
+100 guests	100/WORD guests/guest
+#################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+2pc	2/MEASUREMENT pc/UNIT_SET
+2pcs	2/MEASUREMENT pcs/UNIT_SET
+2 piece	2/MEASUREMENT piece/UNIT_SET
+2-piece	2/MEASUREMENT piece/UNIT_SET
+two piece	two/WORD piece/WORD
+1000 pieces	1000/MEASUREMENT pieces/UNIT_SET
+1000 pieces and up (jazz puzzles for adults 1000 pieces and up)	1000/MEASUREMENT pieces/UNIT_SET and/IGNORE up/WORD (/IGNORE jazz/WORD puzzles/puzzle for/IGNORE adults/WORD 1000/MEASUREMENT pieces/UNIT_SET and/IGNORE up/WORD )/IGNORE
+12 count (12 count fine point markers)	12/MEASUREMENT count/UNIT_SET (/IGNORE 12/MEASUREMENT count/UNIT_SET fine/WORD point/WORD markers/marker )/IGNORE
+#################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+###########	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+one year old	one/WORD year/WORD old/WORD
+2 year old	2/AGE_YEAR _/IGNORE year_old/IGNORE
+2 year olds	2/AGE_YEAR _/IGNORE year_olds/IGNORE
+3 year old	3/AGE_YEAR _/IGNORE year_old/IGNORE
+3 year olds	3/AGE_YEAR _/IGNORE year_olds/IGNORE
+4 year old	4/AGE_YEAR _/IGNORE year_old/IGNORE
+4 year olds	4/AGE_YEAR _/IGNORE year_olds/IGNORE
+5 year old	5/AGE_YEAR _/IGNORE year_old/IGNORE
+6 year old	6/AGE_YEAR _/IGNORE year_old/IGNORE
+7 year old	7/AGE_YEAR _/IGNORE year_old/IGNORE
+8 year old	8/AGE_YEAR _/IGNORE year_old/IGNORE
+###########	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+baby ... 1 year old	baby/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE 1/AGE_YEAR _/IGNORE year_old/IGNORE
+toddler ... 2 year old	toddler/AUDIENCE_TODDLER ./IGNORE ./IGNORE ./IGNORE 2/AGE_YEAR _/IGNORE year_old/IGNORE
+toddler 3 year old	toddler/AUDIENCE_TODDLER 3/AGE_YEAR _/IGNORE year_old/IGNORE
+###########	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+toddler ... age 1-2	toddler/AUDIENCE_TODDLER ./IGNORE ./IGNORE ./IGNORE age/IGNORE 1/AGE_YEAR_START 2/AGE_YEAR_END
+toddlers 1-3	toddlers/AUDIENCE_TODDLER 1/AGE_YEAR_START 3/AGE_YEAR_END
+toddlers age 1-3	toddlers/AUDIENCE_TODDLER age/IGNORE 1/AGE_YEAR_START 3/AGE_YEAR_END
+toddler ages 1-3	toddler/AUDIENCE_TODDLER ages/IGNORE 1/AGE_YEAR_START 3/AGE_YEAR_END
+toddlers age 2-4	toddlers/AUDIENCE_TODDLER age/IGNORE 2/AGE_YEAR_START 4/AGE_YEAR_END
+toddlers 3-5	toddlers/AUDIENCE_TODDLER 3/AGE_YEAR_START 5/AGE_YEAR_END
+toddlers age 3-5	toddlers/AUDIENCE_TODDLER age/IGNORE 3/AGE_YEAR_START 5/AGE_YEAR_END
+toddler ... ages 2-4	toddler/AUDIENCE_TODDLER ./IGNORE ./IGNORE ./IGNORE ages/IGNORE 2/AGE_YEAR_START 4/AGE_YEAR_END
+toddlers 2-4 years	toddlers/AUDIENCE_TODDLER 2/AGE_YEAR_START 4/AGE_YEAR_END years/IGNORE
+###########	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+girls age 4	girls/GENDER_GIRL age/IGNORE _/IGNORE 4/AGE_YEAR
+girls age 5	girls/GENDER_GIRL age/IGNORE _/IGNORE 5/AGE_YEAR
+girls age 6	girls/GENDER_GIRL age/IGNORE _/IGNORE 6/AGE_YEAR
+girls age 7	girls/GENDER_GIRL age/IGNORE _/IGNORE 7/AGE_YEAR
+###########	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+1 year old baby	1/AGE_YEAR _/IGNORE year_old/IGNORE baby/AUDIENCE_BABY
+one year old girl	one/WORD year/WORD old/WORD girl/GENDER_GIRL
+1 year old girl	1/AGE_YEAR _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+1 year old boy	1/AGE_YEAR _/IGNORE year_old/IGNORE boy/GENDER_BOY
+2 year old boys	2/AGE_YEAR _/IGNORE year_old/IGNORE boys/GENDER_BOY
+3 year old boys	3/AGE_YEAR _/IGNORE year_old/IGNORE boys/GENDER_BOY
+3 year old girls	3/AGE_YEAR _/IGNORE year_old/IGNORE girls/GENDER_GIRL
+4 year old girl	4/AGE_YEAR _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+4 year old boy	4/AGE_YEAR _/IGNORE year_old/IGNORE boy/GENDER_BOY
+5 year old girls	5/AGE_YEAR _/IGNORE year_old/IGNORE girls/GENDER_GIRL
+5 year old boys	5/AGE_YEAR _/IGNORE year_old/IGNORE boys/GENDER_BOY
+6 year old girls	6/AGE_YEAR _/IGNORE year_old/IGNORE girls/GENDER_GIRL
+6 year old boy	6/AGE_YEAR _/IGNORE year_old/IGNORE boy/GENDER_BOY
+7 year old girl	7/AGE_YEAR _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+7 year old boys	7/AGE_YEAR _/IGNORE year_old/IGNORE boys/GENDER_BOY
+8 year old girl	8/AGE_YEAR _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+8 year old boy	8/AGE_YEAR _/IGNORE year_old/IGNORE boy/GENDER_BOY
+a 9 year old girl	a/IGNORE 9/AGE_YEAR _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+9 year old ... boys	9/AGE_YEAR _/IGNORE year_old/IGNORE ./IGNORE ./IGNORE ./IGNORE boys/GENDER_BOY
+10 year old girl	10/AGE_YEAR _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+10 year old boys	10/AGE_YEAR _/IGNORE year_old/IGNORE boys/GENDER_BOY
+10-year-old boys	10/AGE_YEAR -/IGNORE year-old/IGNORE boys/GENDER_BOY
+11 year old boy	11/AGE_YEAR _/IGNORE year_old/IGNORE boy/GENDER_BOY
+11 year old girls	11/AGE_YEAR _/IGNORE year_old/IGNORE girls/GENDER_GIRL
+12 year old ... girls	12/AGE_YEAR _/IGNORE year_old/IGNORE ./IGNORE ./IGNORE ./IGNORE girls/GENDER_GIRL
+12 year old boys	12/AGE_YEAR _/IGNORE year_old/IGNORE boys/GENDER_BOY
+13 year old girls	13/AGE_YEAR _/IGNORE year_old/IGNORE girls/GENDER_GIRL
+13 year old boys	13/AGE_YEAR _/IGNORE year_old/IGNORE boys/GENDER_BOY
+#################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+girls 3-5	girls/GENDER_GIRL 3/AGE_YEAR_START 5/AGE_YEAR_END
+boys age 4-5	boys/GENDER_BOY age/IGNORE 4/AGE_YEAR_START 5/AGE_YEAR_END
+girls 4-6	girls/GENDER_GIRL 4/AGE_YEAR_START 6/AGE_YEAR_END
+boys 4-6	boys/GENDER_BOY 4/AGE_YEAR_START 6/AGE_YEAR_END
+boys 4-7	boys/GENDER_BOY 4/AGE_YEAR_START 7/AGE_YEAR_END
+girls age 4-7	girls/GENDER_GIRL age/IGNORE 4/AGE_YEAR_START 7/AGE_YEAR_END
+boys 6-8	boys/GENDER_BOY 6/AGE_YEAR_START 8/AGE_YEAR_END
+boys age 6-8	boys/GENDER_BOY age/IGNORE 6/AGE_YEAR_START 8/AGE_YEAR_END
+boys ... 6-8 years old	boys/GENDER_BOY ./IGNORE ./IGNORE ./IGNORE 6/AGE_YEAR_START 8/AGE_YEAR_END years_old/IGNORE
+girl ... ages 6-8	girl/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE ages/IGNORE 6/AGE_YEAR_START 8/AGE_YEAR_END
+girls 6-8	girls/GENDER_GIRL 6/AGE_YEAR_START 8/AGE_YEAR_END
+girls 6-8 years old	girls/GENDER_GIRL 6/AGE_YEAR_START 8/AGE_YEAR_END years_old/IGNORE
+girls of 7-8	girls/GENDER_GIRL of/IGNORE 7/WORD -/IGNORE 8/WORD
+girls 8-10	girls/GENDER_GIRL 8/AGE_YEAR_START 10/AGE_YEAR_END
+boys 8-10	boys/GENDER_BOY 8/AGE_YEAR_START 10/AGE_YEAR_END
+boys age 8-10	boys/GENDER_BOY age/IGNORE 8/AGE_YEAR_START 10/AGE_YEAR_END
+girls ... 8-10 years old	girls/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE 8/AGE_YEAR_START 10/AGE_YEAR_END years_old/IGNORE
+girls ... age 8-10	girls/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE age/IGNORE 8/AGE_YEAR_START 10/AGE_YEAR_END
+boy 6-12	boy/GENDER_BOY 6/AGE_YEAR_START 12/AGE_YEAR_END
+girls 6-12	girls/GENDER_GIRL 6/AGE_YEAR_START 12/AGE_YEAR_END
+girls 8-12	girls/GENDER_GIRL 8/AGE_YEAR_START 12/AGE_YEAR_END
+girls ages 8-12	girls/GENDER_GIRL ages/IGNORE 8/AGE_YEAR_START 12/AGE_YEAR_END
+boys 8-12	boys/GENDER_BOY 8/AGE_YEAR_START 12/AGE_YEAR_END
+boys age 8-12	boys/GENDER_BOY age/IGNORE 8/AGE_YEAR_START 12/AGE_YEAR_END
+girls ages 8-12	girls/GENDER_GIRL ages/IGNORE 8/AGE_YEAR_START 12/AGE_YEAR_END
+girls 10-12	girls/GENDER_GIRL 10/AGE_YEAR_START 12/AGE_YEAR_END
+girls age 10-12	girls/GENDER_GIRL age/IGNORE 10/AGE_YEAR_START 12/AGE_YEAR_END
+girls 10-12 years old	girls/GENDER_GIRL 10/AGE_YEAR_START 12/AGE_YEAR_END years_old/IGNORE
+boys 10-12 years old	boys/GENDER_BOY 10/AGE_YEAR_START 12/AGE_YEAR_END years_old/IGNORE
+boys 8-14	boys/GENDER_BOY 8/AGE_YEAR_START 14/AGE_YEAR_END
+boys ... 12-14	boys/GENDER_BOY ./IGNORE ./IGNORE ./IGNORE 12/WORD -/IGNORE 14/WORD
+girls 12-14	girls/GENDER_GIRL 12/AGE_YEAR_START 14/AGE_YEAR_END
+girls 14-16	girls/GENDER_GIRL 14/AGE_YEAR_START 16/AGE_YEAR_END
+boys 14-16	boys/GENDER_BOY 14/AGE_YEAR_START 16/AGE_YEAR_END
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+7-9year boy	7/AGE_YEAR_START 9/AGE_YEAR_END year_/IGNORE boy/GENDER_BOY
+##############	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+1+ year old	1/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE
+1 + year old	1/AGE_YEAR_START _/IGNORE +/IGNORE _/IGNORE year_old/IGNORE
+1 + year old girl	1/AGE_YEAR_START _/IGNORE +/IGNORE _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+2+ year old	2/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE
+2 + year old boy	2/AGE_YEAR_START _/IGNORE +/IGNORE _/IGNORE year_old/IGNORE boy/GENDER_BOY
+3+ year old	3/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE
+3+ year old boys	3/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE boys/GENDER_BOY
+3+ year old girls	3/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE girls/GENDER_GIRL
+4+ year old boys	4/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE boys/GENDER_BOY
+5+ year old girl	5/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE girl/GENDER_GIRL
+5+ year old boys	5/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE boys/GENDER_BOY
+10+ year old boys	10/AGE_YEAR_START +/IGNORE _/IGNORE year_old/IGNORE boys/GENDER_BOY
+#################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+age 2-4	age/IGNORE 2/AGE_YEAR_START 4/AGE_YEAR_END
+kids 2-4	kids/AUDIENCE_KID 2/AGE_YEAR_START 4/AGE_YEAR_END
+kids ages 2-4	kids/AUDIENCE_KID ages/IGNORE 2/AGE_YEAR_START 4/AGE_YEAR_END
+kids 3-5	kids/AUDIENCE_KID 3/AGE_YEAR_START 5/AGE_YEAR_END
+kids ages 3-5	kids/AUDIENCE_KID ages/IGNORE 3/AGE_YEAR_START 5/AGE_YEAR_END
+kids 4-6	kids/AUDIENCE_KID 4/AGE_YEAR_START 6/AGE_YEAR_END
+age 4-7	age/IGNORE 4/AGE_YEAR_START 7/AGE_YEAR_END
+kids ... 4-8	kids/AUDIENCE_KID ./IGNORE ./IGNORE ./IGNORE 4/WORD -/IGNORE 8/WORD
+kids ages 4-8	kids/AUDIENCE_KID ages/IGNORE 4/AGE_YEAR_START 8/AGE_YEAR_END
+kids 5-7	kids/AUDIENCE_KID 5/AGE_YEAR_START 7/AGE_YEAR_END
+kids 5-8	kids/AUDIENCE_KID 5/AGE_YEAR_START 8/AGE_YEAR_END
+kids ... ages 6-8	kids/AUDIENCE_KID ./IGNORE ./IGNORE ./IGNORE ages/IGNORE 6/AGE_YEAR_START 8/AGE_YEAR_END
+kids 6-8	kids/AUDIENCE_KID 6/AGE_YEAR_START 8/AGE_YEAR_END
+kids age 6-8	kids/AUDIENCE_KID age/IGNORE 6/AGE_YEAR_START 8/AGE_YEAR_END
+kids 8-10	kids/AUDIENCE_KID 8/AGE_YEAR_START 10/AGE_YEAR_END
+kids ages 8-10	kids/AUDIENCE_KID ages/IGNORE 8/AGE_YEAR_START 10/AGE_YEAR_END
+kids 2-11	kids/AUDIENCE_KID 2/AGE_YEAR_START 11/AGE_YEAR_END
+kids 8-12	kids/AUDIENCE_KID 8/AGE_YEAR_START 12/AGE_YEAR_END
+kids ages 8-12	kids/AUDIENCE_KID ages/IGNORE 8/AGE_YEAR_START 12/AGE_YEAR_END
+kids ... age 8-12	kids/AUDIENCE_KID ./IGNORE ./IGNORE ./IGNORE age/IGNORE 8/AGE_YEAR_START 12/AGE_YEAR_END
+ages 8-12	ages/IGNORE 8/AGE_YEAR_START 12/AGE_YEAR_END
+kids 8-14	kids/AUDIENCE_KID 8/AGE_YEAR_START 14/AGE_YEAR_END
+kids 2-11	kids/AUDIENCE_KID 2/AGE_YEAR_START 11/AGE_YEAR_END
+kids 9-12	kids/AUDIENCE_KID 9/AGE_YEAR_START 12/AGE_YEAR_END
+kids 10-12	kids/AUDIENCE_KID 10/AGE_YEAR_START 12/AGE_YEAR_END
+kids ... ages 6-12	kids/AUDIENCE_KID ./IGNORE ./IGNORE ./IGNORE ages/IGNORE 6/AGE_YEAR_START 12/AGE_YEAR_END
+kids 6-14	kids/AUDIENCE_KID 6/AGE_YEAR_START 14/AGE_YEAR_END
+##################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+6 month old baby	6/AGE_MONTH month_old/IGNORE baby/AUDIENCE_BABY
+12 month	12/AGE_MONTH month/IGNORE
+12 months	12/AGE_MONTH months/IGNORE
+12 month ... girl	12/AGE_MONTH month_/IGNORE ./IGNORE ./IGNORE ./IGNORE girl/GENDER_GIRL
+12 month boys	12/AGE_MONTH month_/IGNORE boys/GENDER_BOY
+18 month	18/AGE_MONTH month/IGNORE
+18 month girl	18/AGE_MONTH month_/IGNORE girl/GENDER_GIRL
+18 months girl	18/AGE_MONTH months_/IGNORE girl/GENDER_GIRL
+18 month boys	18/AGE_MONTH month_/IGNORE boys/GENDER_BOY
+24 month boy	24/AGE_MONTH month_/IGNORE boy/GENDER_BOY
+##################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+0-3 months	0/AGE_MONTH_START 3/AGE_MONTH_END months/IGNORE
+0-3 month	0/AGE_MONTH_START 3/AGE_MONTH_END month/IGNORE
+0-6 months	0/AGE_MONTH_START 6/AGE_MONTH_END months/IGNORE
+3-6 month	3/AGE_MONTH_START 6/AGE_MONTH_END month/IGNORE
+3-6 months	3/AGE_MONTH_START 6/AGE_MONTH_END months/IGNORE
+6 to 12 months	6/AGE_MONTH_START 12/AGE_MONTH_END months/IGNORE
+6-12 months	6/AGE_MONTH_START 12/AGE_MONTH_END months/IGNORE
+6-18 months	6/AGE_MONTH_START 18/AGE_MONTH_END months/IGNORE
+12-18 months 	12/AGE_MONTH_START 18/AGE_MONTH_END months_/IGNORE
+18-36 months	18/AGE_MONTH_START 36/AGE_MONTH_END months/IGNORE
+##################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+baby ... 6 months	baby/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE 6/AGE_MONTH months/IGNORE
+##################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+baby boy ... 0-3 months	baby/AUDIENCE_BABY boy/GENDER_BOY ./IGNORE ./IGNORE ./IGNORE 0/AGE_MONTH_START 3/AGE_MONTH_END months/IGNORE
+baby girl ... 0-3 months	baby/AUDIENCE_BABY girl/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE 0/AGE_MONTH_START 3/AGE_MONTH_END months/IGNORE
+baby ... 0-3 months	baby/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE 0/AGE_MONTH_START 3/AGE_MONTH_END months/IGNORE
+infant ... 0-3 months	infant/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE 0/AGE_MONTH_START 3/AGE_MONTH_END months/IGNORE
+baby ... 3-6 months	baby/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE 3/AGE_MONTH_START 6/AGE_MONTH_END months/IGNORE
+baby boy ... 3-6 months	baby/AUDIENCE_BABY boy/GENDER_BOY ./IGNORE ./IGNORE ./IGNORE 3/AGE_MONTH_START 6/AGE_MONTH_END months/IGNORE
+baby girls 3-6 months	baby/AUDIENCE_BABY girls/GENDER_GIRL 3/AGE_MONTH_START 6/AGE_MONTH_END months/IGNORE
+babies 0-6 months	babies/AUDIENCE_BABY 0/AGE_MONTH_START 6/AGE_MONTH_END months/IGNORE
+baby girl ... 6-9 months	baby/AUDIENCE_BABY girl/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE 6/AGE_MONTH_START 9/AGE_MONTH_END months/IGNORE
+baby boy ... 6-9 months	baby/AUDIENCE_BABY boy/GENDER_BOY ./IGNORE ./IGNORE ./IGNORE 6/AGE_MONTH_START 9/AGE_MONTH_END months/IGNORE
+baby ... 6-12 months	baby/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE 6/AGE_MONTH_START 12/AGE_MONTH_END months/IGNORE
+babies 6-12 months	babies/AUDIENCE_BABY 6/AGE_MONTH_START 12/AGE_MONTH_END months/IGNORE
+baby boy ... 6-12 months	baby/AUDIENCE_BABY boy/GENDER_BOY ./IGNORE ./IGNORE ./IGNORE 6/AGE_MONTH_START 12/AGE_MONTH_END months/IGNORE
+baby girl ... 6-12 months	baby/AUDIENCE_BABY girl/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE 6/AGE_MONTH_START 12/AGE_MONTH_END months/IGNORE
+baby ... 12-18 months	baby/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE 12/AGE_MONTH_START 18/AGE_MONTH_END months/IGNORE
+baby girl 12-18 months	baby/AUDIENCE_BABY girl/GENDER_GIRL 12/AGE_MONTH_START 18/AGE_MONTH_END months/IGNORE
+baby ... boy 12-18 months	baby/AUDIENCE_BABY ./IGNORE ./IGNORE ./IGNORE boy/GENDER_BOY 12/AGE_MONTH_START 18/AGE_MONTH_END months/IGNORE
+baby 12-24 months	baby/AUDIENCE_BABY 12/AGE_MONTH_START 24/AGE_MONTH_END months/IGNORE
+baby girl ... 18-24 months	baby/AUDIENCE_BABY girl/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE 18/AGE_MONTH_START 24/AGE_MONTH_END months/IGNORE
+##################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+baby girl	baby/AUDIENCE_BABY girl/GENDER_GIRL
+infant girl	infant/AUDIENCE_BABY girl/GENDER_GIRL
+infant boy	infant/AUDIENCE_BABY boy/GENDER_BOY
+newborn baby	newborn_baby/AUDIENCE_BABY
+newborn baby boy	newborn_baby/AUDIENCE_BABY boy/GENDER_BOY
+newborn babies	newborn_babies/AUDIENCE_BABY
+bebe	bebe/AUDIENCE_BABY
+bebes	bebes/AUDIENCE_BABY
+new born	new_born/AUDIENCE_BABY
+baby boy newborn	baby/AUDIENCE_BABY boy/GENDER_BOY newborn/AUDIENCE_BABY
+baby girls'	baby/AUDIENCE_BABY girls/GENDER_GIRL '/IGNORE
+newborns	newborns/AUDIENCE_BABY
+newborn	newborn/AUDIENCE_BABY
+infant	infant/AUDIENCE_BABY
+###################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+childrens	childrens/AUDIENCE_KID
+kids	kids/AUDIENCE_KID
+child	child/AUDIENCE_KID
+kid	kid/AUDIENCE_KID
+children's	children/WORD 's/IGNORE
+kids'	kids/AUDIENCE_KID '/IGNORE
+###################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+teen	teen/AUDIENCE_TEEN
+teens	teens/AUDIENCE_TEEN
+teenagers	teenagers/AUDIENCE_TEEN
+teen girls	teen/AUDIENCE_TEEN girls/GENDER_GIRL
+teenage girls	teenage/AUDIENCE_TEEN girls/GENDER_GIRL
+teenage boys	teenage/AUDIENCE_TEEN boys/GENDER_BOY
+####################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+for kids and adults -> ignore	for/IGNORE kids/AUDIENCE_KID and/IGNORE adults/WORD -/IGNORE >/IGNORE ignore/WORD
+for him and her -> ignore	for/IGNORE him/he and/IGNORE her/WORD -/IGNORE >/IGNORE ignore/WORD
+men adult -> ignore adult	men/man adult/WORD -/IGNORE >/IGNORE ignore/WORD adult/WORD
+men ... adults -> ignore adults	men/man ./IGNORE ./IGNORE ./IGNORE adults/WORD -/IGNORE >/IGNORE ignore/WORD adults/WORD
+women adult -> ignore adult	women/woman adult/WORD -/IGNORE >/IGNORE ignore/WORD adult/WORD
+women adults -> ignore adults	women/woman adults/WORD -/IGNORE >/IGNORE ignore/WORD adults/WORD
+women men -> unisex -> ignore both	women/woman men/man -/IGNORE >/IGNORE unisex/WORD -/IGNORE >/IGNORE ignore/WORD both/WORD
+kids toddlers -> ignore kids	kids/AUDIENCE_KID toddlers/AUDIENCE_TODDLER -/IGNORE >/IGNORE ignore/WORD kids/AUDIENCE_KID
+kid boy -> ignore kid	kid/AUDIENCE_KID boy/GENDER_BOY -/IGNORE >/IGNORE ignore/WORD kid/AUDIENCE_KID
+####################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+1st birthday	1st/WORD birthday/WORD
+2nd birthday	2nd/WORD birthday/WORD
+first birthday	first/WORD birthday/WORD
+first birthday ... girls	first/WORD birthday/WORD ./IGNORE ./IGNORE ./IGNORE girls/GENDER_GIRL
+1 year old birthday girl	1/AGE_YEAR _/IGNORE year_old/IGNORE birthday/WORD girl/GENDER_GIRL
+one year old boy's birthday	one/WORD year/WORD old/WORD boy/WORD 's/IGNORE birthday/WORD
+1st birthday boy	1st/WORD birthday/WORD boy/GENDER_BOY
+1st bday	1st/WORD bday/WORD
+happy birthday 1st	happy/WORD birthday/WORD 1st/WORD
+####################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE
+14 year old birthday girl 	14/AGE_YEAR _/IGNORE year_old/IGNORE birthday/WORD girl/GENDER_GIRL
+happy birthday 70th	happy/WORD birthday/WORD 70th/WORD
+happy 80th birthday	happy/WORD 80th/WORD birthday/WORD
+21st bday	21st/WORD bday/WORD
+21st birthday male	21st/WORD birthday/WORD male/WORD
+girl ... age 4-5 birthday favors	girl/GENDER_GIRL ./IGNORE ./IGNORE ./IGNORE age/IGNORE 4/AGE_YEAR_START 5/AGE_YEAR_END birthday/WORD favors/WORD
+18th birthday	18th/WORD birthday/WORD
+30th birthday	30th/WORD birthday/WORD
+30th birthday ... for girl	30th/WORD birthday/WORD ./IGNORE ./IGNORE ./IGNORE for/IGNORE girl/GENDER_GIRL
+40th birthday	40th/WORD birthday/WORD
+40th birthday for men	40th/WORD birthday/WORD for/IGNORE men/man
+50th birthday	50th/WORD birthday/WORD
+60th birthday ... women	60th/WORD birthday/WORD ./IGNORE ./IGNORE ./IGNORE women/woman
+60th ... birthday	60th/WORD ./IGNORE ./IGNORE ./IGNORE birthday/WORD
+####################	#/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE #/IGNORE

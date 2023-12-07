@@ -1,0 +1,7 @@
+fa_lex rules:
+* left longest rule
+* _define (): need parenthese for _define
+* use _call Fn instead of writing a tag directly
+* ^ and $ means at the begining and at the end
+* it's character-based rule, use WHITESPACE for ""
+* use FnDelete to write ignore false positive rules

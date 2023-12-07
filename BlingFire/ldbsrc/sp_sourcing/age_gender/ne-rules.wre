@@ -1,0 +1,82 @@
+#
+# WRE Grammar for attribute extraction 
+# 
+
+###########################################
+# Age Group: Search products for age group
+# Baby: 0-1 year old
+# Toddler: 1-3
+# Preschooler: 3-5
+# Kindergartener: 5-6
+# Pre-teen: 9-12
+# Kid: 4-12?
+# Teenager: 13-19
+# Young_adult: 20-25
+# Adult: over the age of 18 or 21 depending on the legal definition in their country
+# Middle-aged: 40-60
+# Senior: Over 60 or 65 depending on the legal definition in their country
+# Elderly: over the age of 80 or 85
+###########################################
+
+_define DASH ("-") 
+ 
+_define YEAR ("year"|"years")
+_define MONTH ("month"|"months") 
+_define OLD ("old")
+ 
+_define ONE ("1"|"i"|"one"|"first"|"1st")
+_define TWO ("2"|"ii"|"two"|"second"|"2nd")
+_define THREE ("3"|"iii"|"three"|"third"|"3rd") 
+_define FOUR ("4"|"iv"|"four"|"fourth"|"4th") 
+_define FIVE ("5"|"v"|"five"|"fifth"|"5th") 
+_define SIX ("6"|"vi"|"six"|"sixth"|"6th")
+_define SEVEN ("7"|"seven"|"seventh"|"7th") 
+_define EIGHT ("8"|"eight"|"eighth"|"8th") 
+_define NINE ("9"|"nine"|"ninth"|"9th") 
+_define TEN ("10"|"ten"|"tenth"|"10th")
+_define ELEVEN ("11"|"eleven"|"eleventh"|"11th") 
+_define TWELVE ("12"|"twelve"|"twelfth"|"12th")
+
+ 
+# Define baby rules 
+_define DefBaby @BABY
+_define DefAgeBaby
+(
+	((ONE|TWO|THREE|FOUR|FIVE|SIX|SEVEN|EIGHT|NINE|TEN|ELEVEN|TWELVE) DASH? MONTH OLD? DefBaby)
+	|
+	(ONE DASH? YEAR OLD? DefBaby)
+	|
+	(DefBaby)
+)
+_end
+#< DefAgeBaby > --> AGE_BABY
+
+# Define toddler rules
+_define DefToddler @TODDLER
+_define DefAgeToddler
+(
+	(DefToddler)
+
+)
+_end
+#< DefAgeToddler > --> AGE_TODDLER
+
+# Define age rules
+_define DefKid @KID
+_define DefAgeKid
+(
+	(DefKid)
+)
+_end
+< DefKid > --> AGE_KID
+
+
+
+
+
+
+
+
+
+
+

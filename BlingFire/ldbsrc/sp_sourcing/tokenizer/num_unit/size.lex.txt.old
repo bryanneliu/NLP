@@ -1,0 +1,90 @@
+_define SizeTok ((sized)|(size)|(length))
+_define OversizeTok ((oversized)|(oversize))
+
+
+#
+# Size Range
+#
+_define NumRangeForSize (NumForUnit (t|x)? (SEP|[/]) NumForUnit (t|x)?)
+_function FnRangeForSize
+  < ^ NumForUnit (t|x)? > --> SIZE_START
+  < (SEP|[/]) > --> IGNORE
+  < NumForUnit (t|x)? $ > --> SIZE_END
+_end
+
+< SizeTok? SEP? NumRangeForSize > --> _call FnSizeRange
+_function FnSizeRange
+  < SizeTok > --> IGNORE
+  < NumRangeForSize > --> _call FnRangeForSize
+_end
+
+
+#
+# For Petite, Small, Medium, Large Size
+#
+_define PetiteTok ((petite))
+_define SmallTok ((small))
+_define XSmallTok (((extra|xs|x) SEP? small)|(xs))
+_define MediumTok ((medium)|(mid WHITESPACE size)|(midsize))
+_define LargeTok ((large))
+_define XLargeTok (((extra|xl|x) SEP? large)|(xl))
+_define XXLargeTok ((xxlarge)|((2|x)xl))
+_define XXXLargeTok ((xxxlarge)|(xxxl)|(3xl))
+
+< PetiteTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE PetiteTok > --> _call FnSize
+< SmallTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE SmallTok > --> _call FnSize
+< XSmallTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE XSmallTok > --> _call FnSize
+< MediumTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE MediumTok > --> _call FnSize
+< LargeTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE LargeTok > --> _call FnSize
+< XLargeTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE XLargeTok > --> _call FnSize
+< XXLargeTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE XXLargeTok > --> _call FnSize
+< XXXLargeTok SEP? SizeTok? > --> _call FnSize
+< SizeTok WHITESPACE XXXLargeTok > --> _call FnSize
+
+_function FnSize
+  < SizeTok > --> IGNORE
+  < PetiteTok > --> SIZE_Petite
+  < SmallTok > --> SIZE_Small
+  < XSmallTok > --> SIZE_XSmall
+  < MediumTok > --> SIZE_Medium
+  < LargeTok > --> SIZE_Large
+  < XLargeTok > --> SIZE_XLarge
+  < XXLargeTok > --> SIZE_XXLarge
+  < XXXLargeTok > --> SIZE_XXXLarge
+_end
+
+
+#
+# For Bed Size
+#
+_define CalKingTok ((california|cali|cal) WHITESPACE (king))
+_define KingTok ((king))
+_define QueenTok ((queen))
+_define FullTok ((full))
+_define TwinTok ((twin))
+
+# CalKing|King, king size is ignored, cal king size is labeled as word
+# King|CalKing, cal king size is ignored, king size is labeled as word
+# Separate to 2 rules, size/IGNORE works correctly
+
+< CalKingTok (SEP)? (SizeTok)? > --> _call FnBedSize
+< KingTok (SEP)? (SizeTok)? > --> _call FnBedSize
+< QueenTok (SEP)? (SizeTok)? > --> _call FnBedSize
+< FullTok (SEP)? (SizeTok)? > --> _call FnBedSize
+< TwinTok (SEP)? (SizeTok)? > --> _call FnBedSize
+
+_function FnBedSize
+  < CalKingTok > --> SIZE_CalKing
+  < KingTok > --> SIZE_King
+  < QueenTok > --> SIZE_Queen
+  < FullTok > --> SIZE_Full
+  < TwinTok > --> SIZE_Twin
+  < SizeTok > --> IGNORE
+_end

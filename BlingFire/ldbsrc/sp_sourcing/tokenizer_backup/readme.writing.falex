@@ -1,0 +1,26 @@
+fa_lex rules:
+* left longest rule
+* _define (): need parenthese for _define
+* use _call Fn instead of writing a tag directly
+* ^ and $ means at the begining and at the end
+* it's character-based rule, use WHITESPACE for ""
+* use FnDelete to write ignore false positive rules
+
+ #
+ # Regular Words (numbers and letters go together)
+ #
+< ((LETTER)|(ChuNX))+ > --> WORD _call FnTokWord
+
+_function FnTokWord
+_include sp_sourcing/tokenizer/vocab.falex
+_end
+
+dev-dsk-lbryanne-2b-80ed3fb7 % printf "gardening book" | fa_lex --ldb=ldb/tokenizer.bin --tagset=sp_sourcing/tokenizer/wbd.tagset.txt
+
+gardening/WORD gardening/garden book/WORD
+
+It will generate WORD and garden rules
+
+< ((LETTER)|(ChuNX))+ > --> _call FnTokWord
+
+gardening/garden

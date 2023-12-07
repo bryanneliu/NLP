@@ -1,0 +1,14 @@
+#
+# Runtime options
+#
+
+[tag-dict]
+fsm-type moore-dfa
+fsm 1
+multi-map-mode triv-dump
+multi-map 2
+dir l2r
+
+[wre]
+wre-conf 3
+action-map 4

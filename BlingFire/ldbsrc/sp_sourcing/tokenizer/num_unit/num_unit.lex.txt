@@ -1,0 +1,102 @@
+# Common Definitions
+_define DESC_LENGTH ((long)|(length)|(tall))
+_define DESC_WIDTH ((wide)|(width))
+_define DESC_DEPTH ((deep)|(depth)|(thick))
+_define DESC_WEIGHT ((capacity))
+_define DESC (DESC_LENGTH|DESC_WIDTH|DESC_DEPTH|DESC_WEIGHT)
+
+_define POUND ((pound)|(pounds)|(lb)|(lbs))
+_define INCH ((inch)|(inches)|(in)|("))
+_define OUNCE ((ounce)|(ounces)|(oz))
+_define GALLON ((gallon)|(gallons)|(gal))
+_define FOOT ((foot)|(feet)|(ft)|('))
+_define VOLT ((volt)|(volts)|(v))
+_define WATT ((watt)|(watts)|(w))
+_define QUART ((quart)|(quarts)|(qt))
+_define LITER ((liter)|(liters)|(l))
+_define MilliLiter ((milliliters)|(milliliter)|(ml))
+_define GRAM ((grams)|(gram)|(g))
+_define MilliGram ((milligrams)|(milligram)|(mg))
+_define MicroGram ((micrograms)|(microgram)|(mcg))
+_define CUP ((cups)|(cup))
+_define CALORIE ((calories)|(calorie)|(cal))
+_define MilliMeter ((millimeters)|(millimeter)|(mm))
+_define SEAT ((seaters)|(seater)|(seats)|(seat)|(sits)|(sit))
+_define PERSON ((people)|(persons)|(person))
+_define PAIR ((pairs)|(pair))
+_define MegaByte ((megabyte)|(megabytes)|(mb))
+_define GigaByte ((gagabyte)|(gagabytes)|(gb))
+_define TeraByte ((terabyte)|(terabytes)|(tb))
+
+_define UNIT (POUND|INCH|OUNCE|GALLON|FOOT|VOLT|WATT|QUART|LITER|MilliLiter|GRAM|MilliGram|MicroGram|CUP|CALORIE|MilliMeter|SEAT|PERSON|PAIR|MegaByte|GigaByte|TeraByte)
+
+# 
+# Pattern 1: num + SEP:(WHITESPACE|HYPHEN)? + unit
+#
+
+# Remove the case "2 in 1"
+< (NUM)+ (SEP)? (in) (SEP)? (NUM)+ > --> _call FnTokExcludePunktNoSpecWords
+
+# Num + (SEP)? + Unit + (WHITESPACE)? (DESC)?
+< (NUM)+([./](NUM)+)? (SEP)? UNIT (WHITESPACE)? (DESC)?> SpecWordDelimNoNum --> _call FnNumUnit
+
+_function FnNumUnit
+  < ^ (NUM)+([./](NUM)+)? > --> MEASUREMENT
+  < POUND > --> UNIT_POUND
+  < INCH > --> UNIT_INCH
+  < OUNCE > --> UNIT_OUNCE
+  < GALLON > --> UNIT_GALLON
+  < FOOT > --> UNIT_FOOT
+  < VOLT > --> UNIT_VOLT
+  < WATT > --> UNIT_WATT
+  < QUART > --> UNIT_QUART
+  < LITER > --> UNIT_LITER
+  < MilliLiter > --> UNIT_MilliLiter
+  < GRAM > --> UNIT_GRAM
+  < MilliGram > --> UNIT_MilliGram
+  < MicroGram > --> UNIT_MicroGram
+  < CUP > --> UNIT_CUP
+  < CALORIE > --> UNIT_CALORIE
+  < MilliMeter > --> UNIT_MilliMeter
+  < SEAT > --> UNIT_SEAT
+  < PERSON > --> UNIT_PERSON
+  < PAIR > --> UNIT_PAIR
+  < MegaByte > --> UNIT_MegaByte
+  < GigaByte > --> UNIT_GigaByte
+  < TeraByte > --> UNIT_TeraByte
+  < DESC > --> IGNORE
+_end
+
+
+#
+# Pattern 2. range_start + ("-"|"to") + range_end + (WHITESPACE)? + unit + (ignore_desc)?
+#
+
+# Num (WHITESPACE) (to|-) (WHITESPACE) Num (WHITESPACE) UNIT (WHITESPACE)? (DESC)?
+< (NUM)+([./](NUM)+)? (WHITESPACE)? (to|HYPHEN) (WHITESPACE)? (NUM)+([./](NUM)+)? (WHITESPACE)? (POUND|INCH|FOOT) (WHITESPACE)? (DESC)? > SpecWordDelimNoNum --> _call FnNumRangeUnit
+
+_function FnNumRangeUnit
+  < ^ (NUM)+([./](NUM)+)? > --> MEASUREMENT_START
+  < (WHITESPACE)? (to|HYPHEN) (WHITESPACE)? > --> IGNORE
+  < (NUM)+([./](NUM)+)? > --> MEASUREMENT_END
+  < POUND > --> UNIT_POUND
+  < INCH > --> UNIT_INCH
+  < FOOT > --> UNIT_FOOT
+  < DESC > --> IGNORE
+_end
+
+
+#
+# Pattern 3: range_start+ + unit + (ignore_desc)?
+#
+< (NUM)+([./](NUM)+)? (WHITESPACE)? [+] (WHITESPACE) (POUND|GALLON|INCH|FOOT) (WHITESPACE)? (DESC)? > SpecWordDelimNoNum --> _call FnNumRangeStartUnit
+
+_function FnNumRangeStartUnit
+  < (NUM)+([./](NUM)+)? > --> MEASUREMENT_START
+  < [+] > --> IGNORE
+  < POUND > --> UNIT_POUND
+  < INCH > --> UNIT_INCH
+  < FOOT > --> UNIT_FOOT
+  < GALLON > --> UNIT_GALLON
+  < DESC > --> IGNORE
+_end 

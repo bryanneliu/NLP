@@ -1,0 +1,20 @@
+baby	BABY
+newborn	BABY
+infant	BABY
+babe	BABY
+crawler	BABY
+toddler	TODDLER
+kid	KID
+kids	KID
+child	KID
+children	KID
+boy	KID
+boys	KID
+girl	KID
+girls	KID
+in their 50s	MIDDLE_AGED
+over 50	MIDDLE_AGED
+the 50 + age group	MIDDLE_AGED
+middle - aged	MIDDLE_AGED
+in your 50s	MIDDLE_AGED
+the 50 + crowd	MIDDLE_AGED

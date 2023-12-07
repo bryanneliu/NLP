@@ -1,0 +1,400 @@
+#
+# Default word-breaking rules, the dictionary of special words and tech-search
+# tokenization rules are included
+#
+
+_include common/chu.fullunicode.def.txt
+
+# previous contain some errors --> _define WHITESPACE [\x0004-\x0020\x007F-\x009F\x00A0\x2000-\x200B\x200E\x200F\x202F\x205F\x2060\x2420\x2422\x2423\x2424\x3000\xFEFF\xFF02]
+_define WHITESPACE [\x0004-\x0020\x007F-\x009F\x00A0\x2000-\x200B\x200E\x200F\x202F\x205F\x2060\x2420\x2424\x3000\xFEFF]
+_define CURRENCY [\x0024\x0080\x00A2-\x00A5\x09F2\x09F3\x0E3F\x20A0\x20A2\x20A3\x20A4\x20A6-\x20AF]
+_define CURRENCY_MINUS_EURO [\x0024\x0080\x00A2-\x00A5\x09F2\x09F3\x0E3F\x20A0\x20A2\x20A3\x20A4\x20A6-\x20AB\x20AD-\x20AF]
+_define EURO_CURRENCY [\x20AC]
+_define HYPHEN [\x002D\x2010\x2011]
+_define MINUS [\x002D\x2012\x207B\x208B\x2212]
+_define NUM [0-9]
+_define NOT0NUM [1-9]
+
+ # APOSTROPHE \x0027
+ # GRAVE ACCENT \x0060
+ # ACUTE ACCENT \x00B4
+ # LEFT SINGLE QUOTATION MARK \x2018
+ # RIGHT SINGLE QUOTATION MARK \x2019
+_define APOSTROPHE [\x0027\x0060\x00B4\x2018\x2019]
+
+ #
+ # Define a regular letter
+ #
+#_define LETTER (ChuLX|ChuMc|ChuMn|ChuMe|[&_])
+_define LETTER (ChuLX|ChuMc|ChuMn|ChuMe)
+
+
+# 
+# Remove Stop Words
+#
+_define SolrStopWords ((a)|(an)|(and)|(are)|(as)|(at)|(be)|(but)|(by)|(for)|(if)|(in)|(into)|(is)|(it)|(of)|(on)|(or)|(such)|(that)|(the)|(their)|(then)|(there)|(these)|(they)|(those)|(this)|(to)|(was)|(will))
+_define StopWords ((SolrStopWords)|(with))
+
+< (StopWords) > --> _call FnIgnoreStopWords
+
+_function FnIgnoreStopWords
+  < (StopWords) > --> IGNORE
+_end
+
+ #
+ # Regular Words (numbers and letters go together)
+ #
+< ((LETTER)|(ChuNX))+ > --> _call FnTokWord
+
+_function FnTokWord
+_include sp_sourcing/tokenizer/lemma.vocab.falex
+< ((LETTER)|(ChuNX))+ > --> WORD
+_end
+
+
+ #
+ # Remove punctuation
+ #
+< [+] > --> WORD
+< ChuPX | ChuSc | ChuSm | ChuSo > --> IGNORE
+< CURRENCY > --> WORD
+< [%] > --> IGNORE
+< [HYPHEN] > --> IGNORE
+
+ #
+ # Special words are always preffered
+ #
+_define SpecWordDelim (WHITESPACE|ChuPX|ChuSm|ChuSc|ChuSk|ChuSo|ChuNX|$)
+_define SpecWordDelimNoNum (WHITESPACE|ChuPX|ChuSm|ChuSc|ChuSk|ChuSo|$)
+_define SpecWordDelimNoNumNoEnd (WHITESPACE|ChuPX|ChuSm|ChuSc|ChuSk|ChuSo)
+
+
+#
+# Compounding for Num + Unit
+# 10ft, 10', 10'', 5gal, 18oz, 7lb, 110v, 1000w, 35mm, 100mg, 1000mcg, 2qr, 100g, 
+# 100mb, 100GB, 1TB, 24 packs, 2 pieces, 10 cups
+#
+_define FOOT ((foot)|(feet)|(ft)|('))
+_define INCH ((inch)|(inches)|(in)|(''))
+_define GALLON ((gallon)|(gallons)|(gal))
+_define OUNCE ((ounce)|(ounces)|(oz))
+_define POUND ((pound)|(pounds)|(lb)|(lbs))
+_define VOLT ((volt)|(volts)|(v))
+_define WATT ((watt)|(watts)|(w))
+_define MilliMeter ((mm))
+_define MilliGram ((mg))
+_define MCG ((mcg))
+_define QUART ((quart)|(quarts)|(qt))
+_define G ((gram)|(g))
+_define MegaByte ((megabyte)|(megabytes)|(mb))
+_define GigaByte ((gagabyte)|(gagabytes)|(gb))
+_define TeraByte ((terabyte)|(terabytes)|(tb))
+_define SetSizeAfterNum ((packs)|(pack)|(counts)|(count)|(cnt)|(ct)|(pieces)|(piece)|(pcs)|(pc))
+_define SetSizeBeforeNum (((set|pack) (WHITESPACE|HYPHEN) (of|for))|(set)|(pack))
+_define CUP ((cups)|(cup))
+
+
+< (NUM)+ (WHITESPACE|HYPHEN)? (in) (WHITESPACE|HYPHEN)? (NUM)+ > --> _call FnDelete	
+< (NUM)+([.](NUM)+)? (WHITESPACE|HYPHEN)? (FOOT|INCH|GALLON|OUNCE|POUND|VOLT|WATT|MilliMeter|MilliGram|MCG|QUART|MegaByte|GigaByte|TeraByte|G|SetSizeAfterNum|CUP) > SpecWordDelimNoNum --> _call FnNumUnitCompound
+
+
+_function FnNumUnitCompound
+  < ^ (NUM)+([.](NUM)+)? > --> MEASUREMENT
+  < (WHITESPACE|HYPHEN) > --> IGNORE
+  < (FOOT) $ > --> UNIT_FOOT
+  < (INCH) $ > --> UNIT_INCH
+  < (GALLON) $ > --> UNIT_GALLON
+  < (OUNCE) $ > --> UNIT_OUNCE
+  < (POUND) $ > --> UNIT_POUND
+  < (VOLT) $ > --> UNIT_VOLT
+  < (WATT) $ > --> UNIT_WATT
+  < (MilliMeter) $ > --> UNIT_MILLIMETER
+  < (MilliGram) $ > --> UNIT_MILLIGRAM
+  < (MCG) $ > --> UNIT_MCG
+  < (QUART) $ > --> UNIT_QUART
+  < (G) $ > --> UNIT_G
+  < (MegaByte) $ > --> UNIT_MEGABYTE
+  < (GigaByte) $ > --> UNIT_GIGABYTE
+  < (TeraByte) $ > --> UNIT_TERABYTE
+  < (SetSizeAfterNum) $ > --> UNIT_SET
+  < (CUP) $ > --> UNIT_CUP
+_end
+
+
+#
+# Compounding for Unit + Num
+# pack 2, set of 2
+#
+< SetSizeBeforeNum (WHITESPACE|HYPHEN)? (NUM)+ > SpecWordDelimNoNum --> _call FnSetCntCompound
+
+_function FnSetCntCompound
+  < (SetSizeBeforeNum) > --> UNIT_SET
+  < (NUM)+ $ > --> MEASUREMENT
+_end
+
+
+#
+# Compounding for Wearing(clothese, shoe) Size + Num
+#
+_define SIZE ((size))
+_define T ((t))
+
+< (SIZE) (WHITESPACE|HYPHEN)? (NUM)+ > SpecWordDelimNoNum --> _call FnSizeNumCompound
+< (NUM)+ (WHITESPACE|HYPHEN)? ((SIZE)|(T)) > SpecWordDelimNoNum --> _call FnNumSizeCompound
+
+_function FnSizeNumCompound
+  < (SIZE) > --> UNIT_SIZE
+  < (NUM)+ $ > --> MEASUREMENT
+_end
+
+_function FnNumSizeCompound
+  < (NUM)+ > --> MEASUREMENT
+  < ((SIZE)|(T)) $ > --> UNIT_SIZE
+_end
+
+
+#
+# Compounding for Ages: Num + Year/Month
+#
+_define AgeYear ((years (WHITESPACE|HYPHEN) old)|(year (WHITESPACE|HYPHEN) old)|(years)|(year)|(yr))
+_define AgeMonth ((months (WHITESPACE|HYPHEN) old)|(month (WHITESPACE|HYPHEN) old)|(months)|(month)|(mo))
+
+< (NUM)+([.](NUM)+)? (WHITESPACE|HYPHEN)? (AgeYear|AgeMonth) > SpecWordDelimNoNum --> _call FnNumAgeCompound
+
+_function FnNumAgeCompound
+  < ^ (NUM)+([.](NUM)+)? > --> MEASUREMENT
+  < (WHITESPACE|HYPHEN) > --> IGNORE
+  < (AgeYear) $ > --> AGE_YEAR
+  < (AgeMonth) $ > --> AGE_MONTH
+_end
+
+
+#
+# Version/Generation Normalization
+#
+_define VERSION ((generations)|(generation)|(gen)|(versions)|(version)|(series))
+_define NumSynonym ((1st)|(first)|(2nd)|(second)|(3rd)|(third)|(4th)|(fourth)|(5th)|(fifth)|(6th)|(sixth)|(7th)|(seventh)|(8th)|(eighth)|(9th)|(ninth)|(10th)|(tenth)|(11th)|(eleventh)|(12th)|(twelfth)|(13th)|(thirteenth)|(14th)|(fourteenth)|(15th)|(fifteenth)|(16th)|(sixteenth)|(17th)|(seventeenth)|(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)|(ten)|(eleven)|(twelve)|(thirteen)|(fourteen)|(fifteen)|(sixteen)|(seventeen)|(eighteen))
+
+< (((NUM)+([.](NUM)+)?)|(NumSynonym)) (WHITESPACE|HYPHEN)? (VERSION) > --> _call FnNumVersion
+< (VERSION) (WHITESPACE|HYPHEN)? (((NUM)+([.](NUM)+)?)|(NumSynonym)) > --> _call FnNumVersion
+
+_function FnNumVersion
+  < ((NUM)+([.](NUM)+)?)|(NumSynonym) > --> MEASUREMENT
+  < (WHITESPACE|HYPHEN) > --> IGNORE
+  < ^ (VERSION) > --> UNIT_VERSION
+  < (VERSION) $ > --> UNIT_VERSION
+_end
+
+
+ #
+ # Contractions
+ #
+
+ # no apostrophe
+< [cC][aA][nN][nN][oO][tT] > SpecWordDelim --> _call FnSplitCannot
+_function FnSplitCannot
+  < ^ [cC][aA][nN] > --> WORD
+  < [nN][oO][tT] $ > --> WORD
+_end
+
+ # with apostrophe
+_define CONTRACTIONS
+(
+  # you'd, we'll, apple's
+  (APOSTROPHE
+   (
+     (ll)|(LL)|
+     (re)|(RE)|
+     (ve)|(VE)|
+     (d)|(D)|
+     (s)|(S)|
+     (on)|(ON)|
+     (il)|(IL)
+   )
+  )
+  |
+  # shouldn't
+  (
+    [Nn] APOSTROPHE [Tt]
+  )
+)
+_end
+
+# words with contractions
+< ((LETTER)|(ChuNX))+ CONTRACTIONS > SpecWordDelim --> _call FnSeparateContractions
+
+_function FnSeparateContractions
+  < ^ ((LETTER)|(ChuNX))+ > CONTRACTIONS --> WORD
+  < CONTRACTIONS $ > --> IGNORE
+_end
+
+ # with apostrophe in the beginning (French + o'clock)
+_define PRECONTRACTIONS
+(
+  (([lLcCjJdDtTsSoO])|([qQ][uU])) APOSTROPHE
+)
+_end
+
+# words with precontractions
+< PRECONTRACTIONS ((LETTER)|(ChuNX))+ > SpecWordDelim --> _call FnSeparatePreContractions
+
+_function FnSeparatePreContractions
+  < ^ PRECONTRACTIONS > --> WORD
+  < ((LETTER)|(ChuNX))+ $ > --> WORD
+_end
+
+
+ #
+ # Abbreviations
+ #
+### changed in v5 _define AbbrLetterWord ((LETTER)(LETTER)?)
+_define AbbrLetterWord (LETTER)
+
+### # Single-word abbreviation:
+### #  "Dr.Anderson", "Dr. Anderson"
+### < UpToThreeLetterWord [.] > . --> WORD
+### < UpToThreeLetterWord [.] (WHITESPACE|['"])* $ > --> _call FnTokExcludePunktNoSpecWords
+
+_define ABBREVIATION_SEQUENCE
+(
+ # U.S.A, A.B.Jr., e.g., ...
+ (AbbrLetterWord [.])+ AbbrLetterWord
+)
+_end
+
+ # "e.g." --> [e.g.]
+< ABBREVIATION_SEQUENCE [.] > --> WORD
+
+ # "e.g," --> [e.g]
+< ABBREVIATION_SEQUENCE [.]? > SpecWordDelim --> WORD
+
+ # "etc.$" --> [etc][.]
+< ABBREVIATION_SEQUENCE [.] (WHITESPACE|['"])* $ > --> _call FnExcludeLastDotFromAbbr
+_function FnExcludeLastDotFromAbbr
+ < ^ ABBREVIATION_SEQUENCE > --> WORD
+ < [.'"] > --> WORD
+_end
+
+
+
+### # special words
+### # TODO: should be cleaned up
+###_define SPECIAL_WORDS
+### (
+###   ([Cc][+][+])
+###  |([Cc][#])
+###  |([Cc][Oo][Mm][+])
+###  |([Jj][#])
+###  |([Jj][+][+])
+###  |([Gg][Dd][Ii][+])
+###  |([.][Nn][Ee][Tt])
+###  |([Gg][+][+])
+###  |([Aa][*])
+###  |([Ff][#])
+### )
+###_end
+
+###< SPECIAL_WORDS > SpecWordDelim --> _call FnSpecialWord
+###
+###_function FnSpecialWord
+###  < ^ .+ > --> WORD
+###_end
+
+
+ #
+ # Numbers
+ #
+ # Note: formatted number cannot start with 0, e.g. 01,000 or 000,000
+ #
+
+ # comma delimited number (american/european) format 1,000,000.00
+###< MINUS? (NOT0NUM)(NUM)?(NUM)?([,](NUM)(NUM)(NUM))+ ([.](NUM)+)? > (SpecWordDelimNoNum) --> WORD
+ # not formatted number with matched right context (for optimization)
+###< MINUS? (NUM)+ > (SpecWordDelimNoNum) --> WORD
+ # not formatted numbers "1000.0", "10.5"
+###< MINUS? (NUM)+([.](NUM)+)? > (SpecWordDelimNoNum) --> WORD
+ # versions with up to three segments, e.g. "2.95.3"
+###< (NUM)+ [.](NUM)+[.](NUM)+ > (SpecWordDelimNoNum) --> WORD
+ # only with decimal part .99
+###< MINUS? [.](NUM)+ > (SpecWordDelimNoNum) --> WORD
+
+ # comma delimited number (american/european) format 1,000,000.00. 10PM, 10bn, 3d?
+< (NOT0NUM)(NUM)?(NUM)?([,](NUM)(NUM)(NUM))+ ([.](NUM)+)? (LETTER)* > (SpecWordDelimNoNum) --> WORD
+ # not formatted number with matched right context (for optimization)
+< (NUM)+ (LETTER)* > (SpecWordDelimNoNum) --> WORD
+ # not formatted numbers "1000.0", "10.5"
+< (NUM)+([.](NUM)+)? (LETTER)* > (SpecWordDelimNoNum) --> WORD
+ # versions with up to three segments, e.g. "2.95.3"
+< (NUM)+ [.](NUM)+[.](NUM)+ (LETTER)* > (SpecWordDelimNoNum) --> WORD
+ # only with decimal part .99
+< [.](NUM)+ (LETTER)* > (SpecWordDelimNoNum) --> WORD
+
+
+ # Suppress all sequences which start with number or dot and have dots in them and
+ # end with number but are not of the format above.
+### < MINUS? (NUM)+[.](NUM)+[.]((NUM)|[.])+(NUM) > (SpecWordDelimNoNum) --> IGNORE _call FnTokExcludePunktNoSpecWords
+
+
+ #
+ # Tech-terms
+ #
+
+ # Plus in a post position of a single letter:
+ # For exampe,  valid ones: c++, g++, A+, COM+, Star+
+ #              invalid ones: c+b  +c, , i+++, i--, z+++++++
+ # Note: 1. no exclusion is necessary as right context is specified
+ #       2. we don't do this for '-' because often is a dash as well
+ #       3. bad exaples: SmartMovie+video+, presure+pumps+, irs+ pay online
+ #
+< [A-Za-z]+[+][+]? > (SpecWordDelim) --> WORD
+< [A-Za-z]+[+][+][+]+ > --> _call FnTokExcludePunktNoSpecWords
+
+ # Chords: D#m7, D#7, D# 7
+< ([ABCDEFGabcdefg][#]) > ((SpecWordDelim)|([A-Za-z])) --> WORD
+
+ # make sure we break domains with .net or without as old wb does
+ #     "user@softhome.net" --> [user][softhome][net]
+ # and     "users of .net" --> [users][of][.net]
+ # Note: asp.net is also broken in the way the old word-breaker does: [asp][net]
+ # Tricky examples: "emanila.net46.net/for3968.html" --> [emanila][net46][net][for3968][html]
+ # Tricky examples: "benidorm @euskalnet.net.net" --> [benidorm][euskalnet][net][net]
+ # Note2: FnTokExcludePunktNoSpecWords has lower priority than FnSpecialWord, so just .net is always tokenized by FnSpecialWord
+### < [A-Za-z0-9_.-]*[.][Nn][Ee][Tt]([A-Za-z0-9_.-]*[A-Za-z0-9_-])? > (SpecWordDelimNoNum) --> _call FnTokExcludePunktNoSpecWords
+
+ # teams.microsoft.com, softhome.net, 3.1, 8.x
+### changed in v5 ### < (((LETTER)|(ChuNX))+[.])+((LETTER)|(ChuNX))+ > --> WORD
+< (((LETTER)|(ChuNX))+[.])+((LETTER)|(ChuNX))+ > --> _call FnBreakApartNoSpace
+
+_function FnBreakApartNoSpace
+  < ((LETTER)|(ChuNX))+ > --> WORD
+  < [.] > --> WORD
+_end
+
+< ([#]|[\xff03]) > ((LETTER)|(ChuNX)) --> WORD
+
+< ([@]|[\xff20]) > ((LETTER)|(ChuNX)) --> WORD
+
+< [/] > ((LETTER)|(ChuNX)) --> WORD
+
+ # a standalone file extensions .MHT , .HTM , .HTML and .Net, .mde , .ade , and .accde, .mp3 files .Net
+< [.][A-Za-z0-9]+ > (SpecWordDelim) --> WORD
+
+
+
+ #
+ # common functions
+ #
+
+_function FnTokExcludePunktNoSpecWords
+  < ((LETTER)|(ChuNX))+ > --> WORD
+  < ChuPX | ChuSc | ChuSm | ChuSo > --> WORD
+_end
+
+_function FnTokExcludePunktNoSpecWordsHighPri
+  < ((LETTER)|(ChuNX))+ > --> WORD
+  < ChuPX | ChuSc | ChuSm | ChuSo > --> WORD
+_end
+
+_function FnDelete
+  < $ $ $ > --> WORD
+_end

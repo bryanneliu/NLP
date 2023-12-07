@@ -1,0 +1,11 @@
+< (woman)
+  | (lady)
+  | (female)
+  | (man)
+  | (gentleman)
+  | (male)
+> --> GENDER
+< (50[ ]year[ ]old)
+  | (senior)
+  | (elderly)
+> --> AGE

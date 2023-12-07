@@ -1,0 +1,131 @@
+# As long as query age range and targeting clause age range has overlap, it's matched
+# For "baby age range", ignore baby
+# For "baby" single word, add age range [0-24 months]
+# For "toddler age range", ignore toddler
+# For "toddler" single word, add age range [1-4 years]
+# For other with age range, keep age range
+
+# Baby: 0-1
+# Toddler: 1-3
+# Preschooler: 3-5
+# School Age Child: 6-12
+# Preteen: 9-12
+# Teen: 12-19
+
+_define SEP (WHITESPACE|HYPHEN)
+_define ToTok (WHITESPACE to WHITESPACE)
+_define AgeTok ((aged)|(ages)|(age))
+_define YearTok ((years)|(year)|(yr))
+_define MonthTok ((months)|(month)|(mons)|(mon))
+_define OldTok ((olds)|(old))
+
+_define AgeYearNum (1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16)
+_define AgeMonthNum (0|1|3|6|9|12|18|24|36)
+_define AgeYearRange (AgeYearNum (ToTok|SEP) AgeYearNum)
+_define AgeMonthRange (AgeMonthNum (ToTok|SEP) AgeMonthNum)
+_define AgeYearDesc (YearTok (SEP)? (OldTok)?)
+_define AgeMonthDesc (MonthTok (SEP)? (OldTok)?)
+_define AgeYear (AgeYearNum (SEP)? (AgeYearDesc)?)
+_define AgeMonth (AgeMonthNum (SEP)? AgeMonthDesc)
+
+_define BabyTok ((newborn WHITESPACE babies)|(newborn WHITESPACE baby)|(new WHITESPACE born)|(newborns)|(newborn)|(infants)|(infant)|(babies)|(baby)|(bebes)|(bebe))
+_define ToddlerTok ((toddlers)|(toddler))
+_define KidTok ((kids)|(kid)|(childrens)|(children)|(child))
+_define TeenTok ((teenagers)|(teenager)|(teenage)|(teens)|(teen))
+
+_define BoyTok ((boys)|(boy))
+_define GirlTok ((girls)|(girl))
+
+
+_function FnAgeYearRange
+  < AgeYearNum > (ToTok|SEP) --> AGE_YEAR_START
+  < ToTok|SEP > --> IGNORE
+  (ToTok|SEP) < AgeYearNum > --> AGE_YEAR_END
+_end
+
+_function FnAgeMonthRange
+  < AgeMonthNum > (ToTok|SEP) --> AGE_MONTH_START
+  < ToTok|SEP > --> IGNORE
+  (ToTok|SEP) < AgeMonthNum > --> AGE_MONTH_END
+_end
+
+
+#
+# Pattern: Month Age Range
+# 3-6 months, 6 to 12 months
+#
+< AgeMonthRange (SEP)? AgeMonthDesc > --> _call FnBabyAgeMonthRange
+_function FnBabyAgeMonthRange
+  < AgeMonthRange > --> _call FnAgeMonthRange
+  < AgeMonthDesc > --> IGNORE
+_end
+
+
+#
+# Pattern: Year Age Range
+# girls 3-5, girls age 4-7, boys ... 6-8 years old
+# <> The part to be extracted
+# (context <>) or (<> context), use context to resolve ambiguity
+#
+< (AgeTok)? (SEP)? AgeYearRange (SEP)? (AgeYearDesc)? > --> _call FnKidAgeYearRange
+_function FnKidAgeYearRange
+  < AgeTok > --> IGNORE
+  < SEP > --> IGNORE
+  < AgeYearRange> --> _call FnAgeYearRange
+  < AgeYearDesc > --> IGNORE
+_end
+
+
+#
+# Pattern: with Year Age Start
+# 3+ year old girls, 1 + year old
+#
+< AgeYearNum (SEP)? [+] (SEP)? AgeYearDesc (GirlTok|BoyTok)? > --> _call FnKidAgeYearStart
+_function FnKidAgeYearStart
+  < AgeYearNum > --> AGE_YEAR_START
+  < SEP > --> IGNORE
+  < [+] > --> IGNORE
+  < AgeYearDesc > --> IGNORE
+  < GirlTok > --> GENDER_GIRL
+  < BoyTok > --> GENDER_BOY
+_end
+
+
+#
+# Pattern: A specific Year Age
+# 3 year old, 3 year old girl, girls age 7
+#
+< AgeYearNum SEP AgeYearDesc (SEP)? (GirlTok|BoyTok)? > --> _call FnKidAgeYear
+< (GirlTok|BoyTok)? (SEP)? AgeTok SEP AgeYearNum > --> _call FnKidAgeYear
+_function FnKidAgeYear
+  < AgeYearNum > --> AGE_YEAR
+  < SEP > --> IGNORE
+  < AgeYearDesc > --> IGNORE
+  < GirlTok > --> GENDER_GIRL
+  < BoyTok > --> GENDER_BOY
+  < AgeTok > --> IGNORE
+_end
+
+
+#
+# Pattern: extract gender - girl, boy
+# boys ... 6-8 years old
+#
+< GirlTok|BoyTok > --> _call FnKidGender
+_function FnKidGender
+  < GirlTok > --> GENDER_GIRL
+  < BoyTok > --> GENDER_BOY
+_end
+
+
+#
+# Pattern: extract audience - kid, teen, toddler, baby
+#
+< KidTok|ToddlerTok|BabyTok|TeenTok > --> _call FnKidDesc
+_function FnKidDesc
+  < KidTok > --> AUDIENCE_KID
+  < ToddlerTok > --> AUDIENCE_TODDLER
+  < BabyTok > --> AUDIENCE_BABY
+  < TeenTok > --> AUDIENCE_TEEN
+_end
+	

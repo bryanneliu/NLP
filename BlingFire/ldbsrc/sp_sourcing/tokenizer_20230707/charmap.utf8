@@ -1,0 +1,254 @@
+# There are a total of 54 English characters with accents. These include uppercase and lowercase characters with acute accents (á, Á, é, É, í, Í, ó, Ó, ú, Ú, ý, Ý), grave accents (à, À, è, È, ì, Ì, ò, Ò, ù, Ù), circumflex accents (â, Â, ê, Ê, î, Î, ô, Ô, û, Û), umlaut or diaeresis (ä, Ä, ë, Ë, ï, Ï, ö, Ö, ü, Ü), and tilde accents (ã, Ã, ñ, Ñ, õ, Õ).
+
+# Use utf16 encoding
+# https://github.com/Microsoft/BlingFire/wiki/How-to-add-a-new-BERT-tokenizer-model
+# case folding, dropping of accents
+
+# á -> a
+\xe1 \x61
+
+# Á -> a
+\xc1 \x61
+
+# é -> e
+\xe9 \x65
+
+# É -> e
+\xc9 \x65
+
+# í -> i
+\xed \x69
+
+# Í -> i
+\xcd \x69
+
+# ó -> o
+\xf3 \x6f
+
+# Ó -> o
+\xd3 \x6f
+
+# ú -> u
+\xfa \x75
+
+# Ú -> u
+\xda \x75
+
+# ý -> y
+\xfd \x79
+
+# Ý -> y
+\xdd \x79
+
+# à -> a
+\xe0 \x61
+
+# À -> a
+\xc0 \x61
+
+# è -> e
+\xe8 \x65
+
+# È -> e
+\xc8 \x65
+
+# ì -> i
+\xec \x69
+
+# Ì -> i
+\xcc \x69
+
+# ò -> o
+\xf2 \x6f
+
+# Ò -> o
+\xd2 \x6f
+
+# ù -> u
+\xf9 \x75
+
+# Ù -> u
+\xd9 \x75
+
+# ý -> y
+\xff \x79
+
+# ÿ -> y
+\xff \x79
+
+# ã -> a
+\xe3 \x61
+
+# Ã -> a
+\xc3 \x61
+
+# ñ -> n
+\xf1 \x6e
+
+# Ñ -> n
+\xd1 \x6e
+
+# õ -> o
+\xf5 \x6f
+
+# Õ -> o
+\xd5 \x6f
+
+# â -> a
+\xe2 \x61
+
+# Â -> a
+\xc2 \x61
+
+# ê -> e
+\xea \x65
+
+# Ê -> e
+\xca \x65
+
+# î -> i
+\xee \x69
+
+# Î -> i
+\xce \x69
+
+# ô -> o
+\xf4 \x6f
+
+# Ô -> o
+\xd4 \x6f
+
+# û -> u
+\xfb \x75
+
+# Û -> u
+\xdb \x75
+
+# ä -> a
+\xe4 \x61
+
+# Ä -> a
+\xc4 \x61
+
+# ë -> e
+\xeb \x65
+
+# Ë -> e
+\xcb \x65
+
+# ï -> i
+\xef \x69
+
+# Ï -> i
+\xcf \x69
+
+# ö -> o
+\xf6 \x6f
+
+# Ö -> o
+\xd6 \x6f
+
+# ü -> u
+\xfc \x75
+
+# Ü -> u
+\xdc \x75
+
+# ã -> a
+\xe3 \x61
+
+# Ã -> a
+\xc3 \x61
+
+# ñ -> n
+\xf1 \x6e
+
+# Ñ -> n
+\xd1 \x6e
+
+# õ -> o
+\xf5 \x6f
+
+# Õ -> o
+\xd5 \x6f
+
+# LATIN CAPITAL LETTER A: A --> a
+\x41 \x61
+
+# LATIN CAPITAL LETTER B: B --> b
+\x42 \x62
+
+# LATIN CAPITAL LETTER C: C --> c
+\x43 \x63
+
+# LATIN CAPITAL LETTER D: D --> d
+\x44 \x64
+
+# LATIN CAPITAL LETTER E: E --> e
+\x45 \x65
+
+# LATIN CAPITAL LETTER F: F --> f
+\x46 \x66
+
+# LATIN CAPITAL LETTER G: G --> g
+\x47 \x67
+
+# LATIN CAPITAL LETTER H: H --> h
+\x48 \x68
+
+# LATIN CAPITAL LETTER I: I --> i
+\x49 \x69
+
+# LATIN CAPITAL LETTER J: J --> j
+\x4a \x6a
+
+# LATIN CAPITAL LETTER K: K --> k
+\x4b \x6b
+
+# LATIN CAPITAL LETTER L: L --> l
+\x4c \x6c
+
+# LATIN CAPITAL LETTER M: M --> m
+\x4d \x6d
+
+# LATIN CAPITAL LETTER M: M --> m
+\x4d \x6d
+
+# LATIN CAPITAL LETTER N: N --> n
+\x4e \x6e
+
+# LATIN CAPITAL LETTER O: O --> o
+\x4f \x6f
+
+# LATIN CAPITAL LETTER P: P --> p
+\x50 \x70
+
+# LATIN CAPITAL LETTER Q: Q --> q
+\x51 \x71
+
+# LATIN CAPITAL LETTER R: R --> r
+\x52 \x72
+
+# LATIN CAPITAL LETTER S: S --> s
+\x53 \x73
+
+# LATIN CAPITAL LETTER T: T --> t
+\x54 \x74
+
+# LATIN CAPITAL LETTER U: U --> u
+\x55 \x75
+
+# LATIN CAPITAL LETTER V: V --> v
+\x56 \x76
+
+# LATIN CAPITAL LETTER W: W --> w
+\x57 \x77
+
+# LATIN CAPITAL LETTER X: X --> x
+\x58 \x78
+
+# LATIN CAPITAL LETTER Y: Y --> y
+\x59 \x79
+
+# LATIN CAPITAL LETTER Z: Z --> z
+\x5a \x7a

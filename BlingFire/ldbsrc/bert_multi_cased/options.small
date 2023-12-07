@@ -1,0 +1,14 @@
+#
+# Compilation options
+#
+
+OUTPUT = bert_multi_cased.bin
+
+opt_build_wbd = --dict-root=. --full-unicode --no-min
+
+opt_pack_wbd_fsa = --alg=triv --type=moore-dfa --remap-iws --use-iwia
+opt_pack_wbd_mmap = --alg=triv --type=mmap
+
+resources = \
+	$(tmpdir)/wbd.fsa.$(mode).dump \
+	$(tmpdir)/wbd.mmap.$(mode).dump \

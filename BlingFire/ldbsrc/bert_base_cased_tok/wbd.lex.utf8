@@ -1,0 +1,23 @@
+#
+# Default word-breaking rules, the dictionary of special words and tech-search
+# tokenization rules are included
+#
+
+_include common/bert.common.def.txt
+
+< (ChineseChars)|(BertPunctuation) > --> WORD _call FnTokWord
+< (AllLettersWithoutToLower)+ > --> WORD _call FnTokWord
+
+#
+# BERT specific
+#
+
+< [\[] UNK [\]] > --> WORD _call FnTokWord
+< [\[] CLS [\]] > --> WORD _call FnTokWord
+< [\[] SEP [\]] > --> WORD _call FnTokWord
+< [\[] MASK [\]] > --> WORD _call FnTokWord
+
+_function FnTokWord
+_include bert_base_cased_tok/vocab.falex
+_end
+

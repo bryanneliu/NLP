@@ -1,0 +1,247 @@
+###########
+one year old
+2 year old
+2 year olds
+3 year old
+3 year olds
+4 year old
+4 year olds
+5 year old
+6 year old
+7 year old
+8 year old
+###########
+baby ... 1 year old
+toddler ... 2 year old
+toddler 3 year old
+###########
+toddler ... age 1-2
+toddlers 1-3
+toddlers age 1-3
+toddler ages 1-3
+toddlers age 2-4
+toddlers 3-5
+toddlers age 3-5
+toddler ... ages 2-4
+toddlers 2-4 years
+###########
+girls age 4
+girls age 5
+girls age 6
+girls age 7
+###########
+1 year old baby
+one year old girl
+1 year old girl
+1 year old boy
+2 year old boys
+3 year old boys
+3 year old girls
+4 year old girl
+4 year old boy
+5 year old girls
+5 year old boys
+6 year old girls
+6 year old boy
+7 year old girl
+7 year old boys
+8 year old girl
+8 year old boy
+a 9 year old girl
+9 year old ... boys
+10 year old girl
+10 year old boys
+10-year-old boys
+11 year old boy
+11 year old girls
+12 year old ... girls
+12 year old boys
+13 year old girls
+13 year old boys
+#################
+girls 3-5
+boys age 4-5
+girls 4-6
+boys 4-6
+boys 4-7
+girls age 4-7
+boys 6-8
+boys age 6-8
+boys ... 6-8 years old
+girl ... ages 6-8
+girls 6-8
+girls 6-8 years old
+girls of 7-8
+girls 8-10
+boys 8-10
+boys age 8-10
+girls ... 8-10 years old
+girls ... age 8-10
+boy 6-12
+girls 6-12
+girls 8-12
+girls ages 8-12
+boys 8-12
+boys age 8-12
+girls ages 8-12
+girls 10-12
+girls age 10-12
+girls 10-12 years old
+boys 10-12 years old
+boys 8-14
+boys ... 12-14
+girls 12-14
+girls 14-16
+boys 14-16
+##############
+7-9year boy
+##############
+1+ year old
+1 + year old
+1 + year old girl
+2+ year old
+2 + year old boy
+3+ year old
+3+ year old boys
+3+ year old girls
+4+ year old boys
+5+ year old girl
+5+ year old boys
+10+ year old boys
+#################
+age 2-4
+kids 2-4
+kids ages 2-4
+kids 3-5
+kids ages 3-5
+kids 4-6
+age 4-7
+kids ... 4-8
+kids ages 4-8
+kids 5-7
+kids 5-8
+kids ... ages 6-8
+kids 6-8
+kids age 6-8
+kids 8-10
+kids ages 8-10
+kids 2-11
+kids 8-12
+kids ages 8-12
+kids ... age 8-12
+ages 8-12
+kids 8-14
+kids 2-11
+kids 9-12
+kids 10-12
+kids ... ages 6-12
+kids 6-14
+##################
+6 month old baby
+12 month
+12 months
+12 month ... girl
+12 month boys
+18 month
+18 month girl
+18 months girl
+18 month boys
+24 month boy
+##################
+0-3 months
+0-3 month
+0-6 months
+3-6 month
+3-6 months
+6 to 12 months
+6-12 months
+6-18 months
+12-18 months 
+18-36 months
+##################
+baby ... 6 months
+##################
+baby boy ... 0-3 months
+baby girl ... 0-3 months
+baby ... 0-3 months
+infant ... 0-3 months
+baby ... 3-6 months
+baby boy ... 3-6 months
+baby girls 3-6 months
+babies 0-6 months
+baby girl ... 6-9 months
+baby boy ... 6-9 months
+baby ... 6-12 months
+babies 6-12 months
+baby boy ... 6-12 months
+baby girl ... 6-12 months
+baby ... 12-18 months
+baby girl 12-18 months
+baby ... boy 12-18 months
+baby 12-24 months
+baby girl ... 18-24 months
+##################
+baby girl
+infant girl
+infant boy
+newborn baby
+newborn baby boy
+newborn babies
+bebe
+bebes
+new born
+baby boy newborn
+baby girls'
+newborns
+newborn
+infant
+###################
+childrens
+kids
+child
+kid
+children's
+kids'
+###################
+teen
+teens
+teenagers
+teen girls
+teenage girls
+teenage boys
+####################
+for kids and adults -> ignore
+for him and her -> ignore
+men adult -> ignore adult
+men ... adults -> ignore adults
+women adult -> ignore adult
+women adults -> ignore adults
+women men -> unisex -> ignore both
+kids toddlers -> ignore kids
+kid boy -> ignore kid
+####################
+1st birthday
+2nd birthday
+first birthday
+first birthday ... girls
+1 year old birthday girl
+one year old boy's birthday
+1st birthday boy
+1st bday
+happy birthday 1st
+####################
+14 year old birthday girl 
+happy birthday 70th
+happy 80th birthday
+21st bday
+21st birthday male
+girl ... age 4-5 birthday favors
+18th birthday
+30th birthday
+30th birthday ... for girl
+40th birthday
+40th birthday for men
+50th birthday
+60th birthday ... women
+60th ... birthday
+####################

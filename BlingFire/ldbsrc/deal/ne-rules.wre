@@ -1,0 +1,436 @@
+#
+# WRE Grammar for deal titles
+#
+
+#
+# MONEY Definitions
+# 
+_define DOLLAR ("$"|"dollar"|"dollars")
+_define PERCENT ("%"|"percent")
+_define NUMBER ('[0-9]+')
+_define NUMBERTH ("first"|"second"|"third"|"fourth"|"1st"|"2nd"|"3rd"|"4th")
+_define ENGLISH_NUMBER ("zero"|"one"|"two"|"three"|"four"|"five"|"six"|"seven"|"eight"|"nine"|"ten"|"eleven"|"twelve"|"thirteen"|"fourteen"|"fifteen"|"sixteen"|"seventeen"|"eighteen"|"nineteen"|"twenty"|"thirty"|"forty"|"fifty"|"sixty")
+
+# Example: $10; over $10; under $10; $10 or more; $10 or less; up to $10
+# Note: $10.00 -> $10 00 (After word break, the "." is ignored)
+# Error Handling: 
+_define DefMoney
+(
+	(DOLLAR NUMBER+)
+	|
+	(ENGLISH_NUMBER DOLLAR)
+	|
+	("over"|"under"|"every" DOLLAR NUMBER+)
+	|
+	(DOLLAR NUMBER+ "opalconjunction" "more"|"less")
+	|
+	("up" "to" DOLLAR NUMBER+)
+	|
+	("additional"|"extra" DOLLAR NUMBER+)
+)
+_end
+
+_define DefMoneyRange
+(
+	(DefMoney "to" DefMoney)
+)
+_end
+
+# Example: 10%, 10 pencent, additional 10%, extra 10%, up to 10%
+# Note: 10.00% -> 10 00% (After word break, the "." is ignored)
+# Error Handling
+_define DefPercent
+(
+	(NUMBER+ PERCENT)
+	|
+	(ENGLISH_NUMBER PERCENT)
+	|
+	("additional"|"extra" NUMBER+ PERCENT)
+	|
+	("up" "to" NUMBER+ PERCENT)
+)
+_end
+
+#
+# MONEY Around Definition
+#
+_define FREE ("free")
+_define VERB ("get"|"save"|"receive"|"take"|"earn"|"enjoy")
+_define VERB_SPEND ("buy"|"spend")
+_define VERB_BUY ("buy")
+_define VERB_GET ("get")
+
+_define PREP_FOR ("for")
+_define DefPrep ("on"|"with"|"of"|"when"|"for"|"during")
+< DefPrep > --> PREP
+
+_define NO_LIMIT ("no" "limit")|("no" "minimum")|("within" "us")
+
+#
+# Common Dictionary Definitions
+#
+_define DefOff @OFF
+
+_define DefConjunction ("opalconjunction")
+< DefConjunction > --> CONJUNCTION
+
+_define DefStopWord @STOPWORD
+< DefStopWord > --> STOPWORD
+
+_define DefAny @ANY
+_define DefOrder @ORDER
+_define DefShipping @SHIPPING
+_define DefGift @GIFT
+_define DefRewardCard @REWARD_CARD
+
+_define DefCoupon @COUPON
+_define DefReturn @RETURN
+_define DefCheckOut @CHECKOUT
+_define DefStart @START
+
+#
+# Combination Definitions
+#
+_define DefAnyOrder (DefAny? DefOrder?)
+_define DefWithoutCondition (DefAnyOrder|NO_LIMIT|DefCoupon)
+
+#
+# General Rules
+#
+
+# **** Top General Rules For General Products ***
+
+# MONEY OFF without constrains
+# MONEY PERCENT OFF without constrains
+# MONEY OFF with spending money: spend $150+ and get $10 off; save $1000 on orders $39999.99+; save $10 on orders of $100 or more
+# MONEY PERCENT OFF with spending money: spend $150+ and get 10% off
+# Less MONEY for the same value: $10.0 for $4.0
+# BUY * GET *: buy one get one; buy 6 get 2 free
+# BUY * GET * PERCENT OFF: buy 1 get 1 50% off
+
+_define DefMoneyOffWithoutConditionRule
+(
+	(^ (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(^ VERB DefMoney (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(^ (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? DefConjunction)
+	|
+	(^ VERB DefMoney (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? DefConjunction)
+	|
+	(DefConjunction (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(DefConjunction VERB DefMoney (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+)
+_end
+< DefMoneyOffWithoutConditionRule > --> MONEY_OFF_WITHOUT_CONDITION
+
+_define DefMoneyPercentOffWithoutConditionRule
+(
+	(^ (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(^ (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? DefConjunction)
+	|
+	(DefConjunction (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+)
+_end
+< DefMoneyPercentOffWithoutConditionRule > --> MONEY_PERCENT_OFF_WITHOUT_CONDITION
+
+# Free Full-size Antioxidant Moisturizer When You Spend $65+
+
+_define DefMoneyOffWithSpendingMoneyWithoutConditionRule
+(
+	(^ (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(^ VERB_SPEND DefMoney DefConjunction VERB_GET DefMoney DefOff (DefStopWord)? $)
+	|
+	(^ VERB DefMoney (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(^ (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? DefConjunction)
+	|
+	(^ VERB_SPEND DefMoney DefConjunction VERB_GET DefMoney DefOff (DefStopWord)? DefConjunction)
+	|
+	(^ VERB DefMoney (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? DefConjunction)
+	|
+	(DefConjunction (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(DefConjunction VERB_SPEND DefMoney DefConjunction VERB_GET DefMoney DefOff (DefStopWord)? $)
+	|
+	(DefConjunction VERB DefMoney (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+)
+_end
+< DefMoneyOffWithSpendingMoneyWithoutConditionRule > --> MONEY_OFF_WITH_SPENDING_MONEY_WITHOUT_CONDITION
+
+_define DefMoneyPercentOffWithSpendingMoneyWithoutConditionRule
+(
+	(^ (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(^ VERB DefMoney DefConjunction VERB_GET DefPercent DefOff (DefStopWord)? $)
+	|
+	(^ (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? DefConjunction)
+	|
+	(^ VERB DefMoney DefConjunction VERB_GET DefPercent DefOff (DefStopWord)? DefConjunction)
+	|
+	(DefConjunction (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+	|
+	(DefConjunction VERB DefMoney DefConjunction VERB_GET DefPercent DefOff (DefStopWord)? $)
+)
+_end
+< DefMoneyPercentOffWithSpendingMoneyWithoutConditionRule > --> MONEY_PERCENT_OFF_WITH_SPENDING_MONEY_WITHOUT_CONDITION
+
+_define DefSameValueWithLessMoneyWithoutConditionRule
+(
+	(^ DefMoney PREP_FOR DefMoney $)
+)
+_end
+< DefSameValueWithLessMoneyWithoutConditionRule > --> MONEY_OFF_SAME_VALUE_WITH_LESS_MONEY_WITHOUT_CONDITION
+
+_define DefBuyAndGetWithoutConditionRule
+(
+	(^ VERB_BUY (NUMBER|ENGLISH_NUMBER) (DefWithoutCondition)? VERB_GET (NUMBER|ENGLISH_NUMBER|NUMBERTH) (FREE)? (PREP)? (DefPercent DefOff)? (DefWithoutCondition)? $)
+	|
+	(^ VERB_BUY (NUMBER|ENGLISH_NUMBER) (DefWithoutCondition)? VERB_GET (NUMBER|ENGLISH_NUMBER|NUMBERTH) (FREE)? (PREP)? (DefPercent DefOff)? (DefWithoutCondition)? DefConjunction)
+	|
+	(DefConjunction VERB_BUY (NUMBER|ENGLISH_NUMBER) (DefWithoutCondition)? VERB_GET (NUMBER|ENGLISH_NUMBER|NUMBERTH) (FREE)? (PREP)? (DefPercent DefOff)? (DefWithoutCondition)? $)
+)
+_end
+< DefBuyAndGetWithoutConditionRule > --> MONEY_PERCENT_OFF_BUY_AND_GET_WITHOUT_CONDITION
+
+_define DefFreeRewardCardWithoutConditionRule
+(
+	(^ (VERB|FREE)? DefMoney DefRewardCard (FREE)? $)
+	|
+	(DefConjunction (VERB|FREE)? DefMoney DefRewardCard (FREE)? $)
+	|
+	(^ (VERB|FREE)? DefMoney DefRewardCard (FREE)? DefConjunction)
+)
+_end
+< DefFreeRewardCardWithoutConditionRule > --> FREE_REWARD_CARD_WITHOUT_CONDITION
+
+# *** Not Bad General Rules for General Products ***
+
+# FREE SHIPPING without constrains
+# FREE GIFT without constrains
+
+_define DefFreeShippingWithoutConditionRule
+(
+	(^ (VERB)? FREE DefShipping (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+)
+_end
+< DefFreeShippingWithoutConditionRule > --> FREE_SHIPPING_WITHOUT_CONDITION
+
+_define DefFreeGiftWithoutConditionRule
+(
+	(^ (VERB)? FREE DefGift (DefPrep)? (DefWithoutCondition)? (DefStopWord)? $)
+)
+_end
+< DefFreeGiftWithoutConditionRule > --> FREE_GIFT_WITHOUT_CONDITION
+
+_define DefFreeGiftWithSpendingMoneyWithoutConditionRule
+(
+	(^ (VERB)? FREE DefGift (DefPrep)? (DefWithoutCondition)? (DefPrep)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+)
+_end
+< DefFreeGiftWithSpendingMoneyWithoutConditionRule > --> FREE_GIFT_WITH_SPENDING_MONEY_WITHOUT_CONDITION
+
+
+#
+# Bad Types
+#
+
+# Shipping With Money : $1.99 shipping sitewide; ground shipping for $9.99; $6.49 flat rate shipping for orders under $199; $1.99 shipping with $20+ order
+# MONEY OFF on SHIPPING
+# MONEY Percent OFF on SHIPPING
+# FREE SHIPPING with spending money For General Products: # missing fast, free shipping
+# FREE SHIPPING with spending money for Specific Products : Only this rule -> bad deal
+# FREE SHIPPING For Specific Products : Only this rule -> bad deal
+# FREE GIFT with spending money
+# Free Returns
+# starting at some price: buy anti-aging solutions starting at $47.00
+# Check out information
+
+_define DefShippingWithMoneyRule
+(
+	( DefMoney DefShipping (DefPrep)? (DefWithoutCondition)? (DefMoney)? (DefWithoutCondition)? )
+	|
+	( DefShipping PREP_FOR DefMoney )
+)
+_end
+< DefShippingWithMoneyRule > --> BAD_SHIPPING_WITH_MONEY
+
+_define DefMoneyOffOnShippingRule
+(
+	( DefMoney DefOff (DefPrep)? DefShipping )
+)
+_end
+< DefMoneyOffOnShippingRule > --> BAD_MONEY_OFF_ON_SHIPPING
+
+_define DefMoneyPercentOffOnShippingRule
+(
+	( DefPercent DefOff (DefPrep)? DefShipping )
+)
+_end
+< DefMoneyPercentOffOnShippingRule > --> BAD_MONEY_PERCENT_OFF_ON_SHIPPING
+
+
+_define DefFreeShippingWithSpendingMoneyWithoutConditionRule
+(
+	(^ (VERB)? FREE DefShipping (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? $)
+)
+_end
+< DefFreeShippingWithSpendingMoneyWithoutConditionRule > --> BAD_FREE_SHIPPING_WITH_SPENDING_MONEY_WITHOUT_CONDITION
+
+_define DefFreeReturnRule
+(
+	( FREE DefReturn )
+)
+_end
+< DefFreeReturnRule> --> BAD_FREE_RETURN
+
+_define DefStartAtPriceRule
+(
+	(DefStart DefMoney)
+)
+_end
+< DefStartAtPriceRule > --> BAD_START_AT_PRICE
+
+_define DefCheckOutInformationRule
+(
+	(^ DefCheckOut)
+)
+_end
+< DefCheckOutInformationRule > --> BAD_CHECK_OUT_INFORMATION
+
+#
+# Specific Rules
+#
+
+# MONEY OFF
+# MONEY PERCENT OFF
+# MONEY OFF With Spending Money
+# MONEY PERCENT OFF With Spending Money
+# Same Value for Less Money
+# Buy And Get
+# Free Reward Card
+
+_define DefMoneyOffRule
+(
+	( (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? )
+	|
+	( VERB DefMoney (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? )
+)
+_end
+< DefMoneyOffRule > --> MONEY_OFF
+
+_define DefMoneyPercentOffRule
+(
+	( (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? )
+	|
+	( VERB DefPercent (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefStopWord)? )
+)
+_end
+< DefMoneyPercentOffRule > --> MONEY_PERCENT_OFF
+
+_define DefMoneyOffWithSpendingMoneyRule
+(
+	( (VERB)? DefMoney DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? )
+	|
+	( VERB_SPEND DefMoney DefConjunction VERB_GET DefMoney DefOff (DefStopWord)? )
+)
+_end
+< DefMoneyOffWithSpendingMoneyRule > --> MONEY_OFF_WITH_SPENDING_MONEY
+
+_define DefMoneyPercentOffWithSpendingMoneyRule
+(
+	( (VERB)? DefPercent DefOff (DefCoupon)? (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? )
+	|
+	( VERB_SPEND DefMoney DefConjunction VERB_GET DefPercent DefOff (DefStopWord)? )
+)
+_end
+< DefMoneyPercentOffWithSpendingMoneyRule > --> MONEY_PERCENT_OFF_WITH_SPENDING_MONEY
+
+_define DefSameValueWithLessMoneyRule
+(
+	( DefMoney ("value")? PREP_FOR DefMoney )
+)
+_end
+< DefSameValueWithLessMoneyRule > --> MONEY_OFF_SAME_VALUE_WITH_LESS_MONEY
+
+_define DefBuyAndGetRule
+(
+	( VERB_BUY (NUMBER|ENGLISH_NUMBER) (DefWithoutCondition)? VERB_GET (NUMBER|ENGLISH_NUMBER|NUMBERTH) (FREE)? (DefPrep)? (DefPercent DefOff)? (DefWithoutCondition)? )
+	|
+	( VERB_GET (NUMBER|ENGLISH_NUMBER|NUMBERTH) FREE )
+)
+_end
+< DefBuyAndGetRule > --> MONEY_PERCENT_OFF_BUY_AND_GET
+
+_define DefFreeRewardCardRule
+(
+	( (VERB|FREE)? DefMoney DefRewardCard (FREE)? )
+)
+_end
+< DefFreeRewardCardRule > --> FREE_REWARD_CARD
+
+
+# *** Exist Only -> Bad Deals ***
+
+# FREE SHIPPING
+# FREE SHIPPING With Spending Money
+
+_define DefFreeShippingWithSpendingMoneyRule
+(
+	( (VERB)? FREE DefShipping (DefPrep)? (DefWithoutCondition)? (DefPrep)? (VERB_SPEND)? DefMoney (DefWithoutCondition)? (DefStopWord)? )
+)
+_end
+< DefFreeShippingWithSpendingMoneyRule > --> FREE_SHIPPING_WITH_SPENDING_MONEY
+
+_define DefFreeShippingRule
+(
+	( (VERB)? FREE DefShipping (DefPrep)? (DefWithoutCondition)? (DefStopWord)? )
+)
+_end
+< DefFreeShippingRule > --> FREE_SHIPPING
+
+
+#
+# Constrains
+#
+
+# FIRST_ORDER
+# NEXT_ORDER
+# MEMBERSHIP
+# ONLINE ORDER
+# IN-STORE ORDER
+# SALE
+# REFER_FRIEND
+# LINK_CARD
+
+_define DefFirstOrder @FIRST_ORDER
+< DefFirstOrder > --> CONSTRAIN_FIRST_ORDER
+
+_define DefNextOrder @NEXT_ORDER
+< DefNextOrder > --> CONSTRAIN_NEXT_ORDER
+
+_define DefOnlineOrder @ONLINE
+< DefOnlineOrder > --> CONSTRAIN_ONLINE_ORDER
+
+_define DefInStoreOrder @INSTORE
+< DefInStoreOrder > --> CONSTRAIN_INSTORE_ORDER
+
+_define DefSale @SALE
+< DefSale > --> CONSTRAIN_SALE
+
+_define DefReferFrined @REFER_FRIEND
+< DefReferFrined > --> CONSTRAIN_REFER_FRIEND
+
+_define DefLinkCard @CARD
+< DefLinkCard > --> CONSTRAIN_LINK_CARD
+
+_define DefSignUp @SIGNUP
+< DefSignUp > --> CONSTRAIN_SIGN_UP
+
+
+
+
+

@@ -1,0 +1,30 @@
+#
+# falex rules
+# 2 piece:
+# with < WHITESPACE > --> IGNORE, 2/MEASUREMENT _/IGNORE piece/UNIT_SET
+# without < WHITESPACE > --> IGNORE, 2/MEASUREMENT piece/UNIT_SET
+
+
+# 
+# Set Count
+#
+_define CntBeforeSet (((panels)|(piece))? (SEP)? ((sets)|(set)))
+_define CntBeforePack ((packs)|(pack)|(pk)|(counts)|(count)|(cnt)|(ct)|(pieces)|(piece)|(pcs)|(pc))
+_define CntBeforeUnit (CntBeforeSet|CntBeforePack)
+_define UnitBeforeCnt (((sets|set|pack|case) (WHITESPACE|HYPHEN) (of|for))|(set)|(pack))
+
+
+# Pattern 1: Count + Set
+< (NUM)+ (SEP)? CntBeforeUnit > --> _call FnCntBeforeUnit
+_function FnCntBeforeUnit
+  < (NUM)+ > --> MEASUREMENT
+  < CntBeforeUnit > --> UNIT_SET
+_end
+  
+
+# Pattern 2: Set + Count
+< UnitBeforeCnt (SEP)? (NUM)+ > SpecWordDelimNoNum --> _call FnUnitBeforeCnt
+_function FnUnitBeforeCnt
+  < UnitBeforeCnt > --> UNIT_SET
+  < (NUM)+ > --> MEASUREMENT
+_end

@@ -1,0 +1,5 @@
+_define WomanTok ((womens)|(women)|(womans)|(woman)|(lady))
+_define ManTok ((mens)|(men)|(mans)|(man)|(guys)|(guy))
+
+< WomanTok > --> AUDIENCE_WOMAN
+< ManTok > --> AUDIENCE_MAN

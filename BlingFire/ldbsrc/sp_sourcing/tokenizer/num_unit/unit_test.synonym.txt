@@ -1,0 +1,5 @@
+lrg, large
+travel size, carry on size, trial size, pocket size, wallet size, purse size
+standard size, official size
+spf, upf
+big and tall, big & tall, large tall
